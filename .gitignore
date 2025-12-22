@@ -46,9 +46,12 @@ frontend/dist/
 .env
 .env.local
 
-# Reports
+# Reports - Exclude generated PDFs and HTML reports
+backend/reports/*.pdf
+backend/reports/*.html
 reports/*.pdf
 reports/*.html
 
 # Logs
 *.log
+
