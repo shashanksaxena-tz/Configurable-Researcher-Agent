@@ -1,43 +1,44 @@
-"""Search utility using Google News RSS."""
-import requests
-from bs4 import BeautifulSoup
-from typing import List, Dict
+"""Search factory and utility."""
+from typing import List, Dict, Any, Type
+from backend.config import settings
+from .search_providers.base import BaseSearchProvider
+from .search_providers.google import GoogleNewsProvider
+from .search_providers.linkedin import LinkedInProvider
+from .search_providers.wikipedia import WikipediaProvider
 
-def search_google_news(query: str, limit: int = 5) -> List[Dict[str, str]]:
+# Registry of available providers
+PROVIDER_MAP: Dict[str, Type[BaseSearchProvider]] = {
+    "google_news": GoogleNewsProvider,
+    "linkedin": LinkedInProvider,
+    "wikipedia": WikipediaProvider
+}
+
+def get_search_results(query: str, limit: int = 5, providers: List[str] = None) -> List[Dict[str, Any]]:
     """
-    Search Google News via RSS feed and return a list of news items.
+    Perform search across multiple configured providers.
 
     Args:
-        query: The search query.
-        limit: Max number of results.
+        query: The search term.
+        limit: Max results per provider.
+        providers: List of provider names to use. If None, uses defaults from settings.
 
     Returns:
-        List of dicts with 'title', 'link', 'published_date'.
+        Combined list of results.
     """
-    # Use the RSS feed for Google News
-    rss_url = f"https://news.google.com/rss/search?q={requests.utils.quote(query)}&hl=en-US&gl=US&ceid=US:en"
+    if providers is None:
+        providers = settings.SEARCH_PROVIDERS
 
-    try:
-        response = requests.get(rss_url, timeout=10)
-        response.raise_for_status()
+    all_results = []
 
-        soup = BeautifulSoup(response.content, "xml")
-        items = soup.find_all("item", limit=limit)
+    for provider_name in providers:
+        if provider_name in PROVIDER_MAP:
+            try:
+                provider_class = PROVIDER_MAP[provider_name]
+                provider_instance = provider_class()
+                # print(f"Searching {provider_name} for '{query}'...")
+                results = provider_instance.search(query, limit=limit)
+                all_results.extend(results)
+            except Exception as e:
+                print(f"Failed to search {provider_name}: {e}")
 
-        results = []
-        for item in items:
-            title = item.title.text if item.title else "No Title"
-            link = item.link.text if item.link else "#"
-            pub_date = item.pubDate.text if item.pubDate else ""
-
-            # Basic cleaning
-            results.append({
-                "title": title,
-                "link": link,
-                "published_date": pub_date
-            })
-
-        return results
-    except Exception as e:
-        print(f"Error searching Google News: {e}")
-        return []
+    return all_results

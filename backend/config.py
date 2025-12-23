@@ -36,6 +36,9 @@ class Settings(BaseSettings):
     # Report Settings
     REPORTS_DIR: str = "./reports"
     
+    # Search Configuration
+    SEARCH_PROVIDERS: List[str] = ["google_news", "wikipedia", "linkedin"]
+
     class Config:
         env_file = ".env"
 

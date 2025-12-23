@@ -4,7 +4,7 @@ from typing import Dict, Any, List
 from .base import BaseResearcher
 import random
 from datetime import datetime, timedelta
-from backend.utils.search import search_google_news
+from backend.utils.search import get_search_results
 
 class NewsResearcher(BaseResearcher):
     """Researcher for news analysis."""
@@ -12,16 +12,21 @@ class NewsResearcher(BaseResearcher):
     async def research(self) -> Dict[str, Any]:
         """Perform news research."""
         
-        # Use real search if we can, otherwise fallback/mix
-        real_news = search_google_news(self.entity_name, limit=10)
+        # Use real search factory
+        # We explicitly ask for google_news for "News" specific research,
+        # but since the prompt asked for "default sources like linkedin... to be configurable",
+        # we will use the default configured providers to catch broad signals.
+        # However, for the specific "news" module, we might want to prioritize news.
+        # For now, let's use the default list which includes all.
+        real_results = get_search_results(self.entity_name, limit=5)
         
         # Transform real news to match expected format
         news_items = []
-        for item in real_news:
+        for item in real_results:
             news_items.append({
                 "headline": item["title"],
-                "date": item["published_date"],
-                "source": "Google News", # Origin source is harder to parse from RSS title without regex, keeping simple
+                "date": item.get("published_date", ""),
+                "source": item.get("source", "Unknown"),
                 "sentiment": "Neutral", # We don't have a sentiment analyzer yet
                 "link": item["link"]
             })
@@ -31,7 +36,7 @@ class NewsResearcher(BaseResearcher):
             news_items = self._generate_news_items()
 
         data = {
-            "recent_news": news_items[:5],
+            "recent_news": news_items[:10], # Increased limit to show variety
             "total_articles": len(news_items) if news_items else random.randint(50, 500),
             "press_releases": random.randint(5, 20), # Still mocked
             "media_mentions": random.randint(100, 1000), # Still mocked
