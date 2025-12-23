@@ -1,13 +1,13 @@
 import pytest
-from backend.modules.financial import FinancialResearcher
-from backend.modules.news import NewsResearcher
+from modules.financial import FinancialResearcher
+from modules.news import NewsResearcher
 from unittest.mock import MagicMock, patch
 
 @pytest.mark.asyncio
 async def test_financial_researcher_structure():
     """Test that financial researcher returns the expected structure even if empty."""
     # We patch the LLM service to return a dummy response so we don't hit the API
-    with patch("backend.modules.base.llm_service.generate_json") as mock_llm:
+    with patch("modules.base.llm_service.generate_json") as mock_llm:
         mock_llm.return_value = {
             "revenue": "$100B",
             "market_cap": "$500B",
@@ -28,13 +28,13 @@ async def test_financial_researcher_structure():
 
 @pytest.mark.asyncio
 async def test_news_researcher_structure():
-    with patch("backend.modules.news.get_search_results") as mock_search:
+    with patch("modules.news.get_search_results") as mock_search:
         mock_search.return_value = [
             {"title": "Test News 1", "source": "Source A", "link": "http://a.com"},
             {"title": "Test News 2", "source": "Source B", "link": "http://b.com"}
         ]
 
-        with patch("backend.modules.news.llm_service.generate_json") as mock_llm:
+        with patch("modules.news.llm_service.generate_json") as mock_llm:
             mock_llm.return_value = {
                 "press_releases": 5,
                 "media_mentions": 100,

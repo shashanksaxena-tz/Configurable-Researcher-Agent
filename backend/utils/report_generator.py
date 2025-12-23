@@ -10,7 +10,7 @@ from typing import List
 from datetime import datetime
 import os
 import uuid
-from backend.models import ResearchResult, EntityType
+from models import ResearchResult, EntityType
 
 
 class ReportGenerator:

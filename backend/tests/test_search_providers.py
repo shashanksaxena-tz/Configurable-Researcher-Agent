@@ -1,8 +1,8 @@
 import pytest
-from backend.utils.search import get_search_results
-from backend.utils.search_providers.google import GoogleNewsProvider
-from backend.utils.search_providers.linkedin import LinkedInProvider
-from backend.utils.search_providers.wikipedia import WikipediaProvider
+from utils.search import get_search_results
+from utils.search_providers.google import GoogleNewsProvider
+from utils.search_providers.linkedin import LinkedInProvider
+from utils.search_providers.wikipedia import WikipediaProvider
 
 def test_google_provider_structure():
     provider = GoogleNewsProvider()

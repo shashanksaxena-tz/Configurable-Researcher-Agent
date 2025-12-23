@@ -17,6 +17,9 @@ COPY requirements.txt .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Ensure Python can import backend as a package
+ENV PYTHONPATH=/app
+
 # Copy application code
 COPY . .
 

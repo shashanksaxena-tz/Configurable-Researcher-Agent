@@ -1,6 +1,6 @@
 """Search factory and utility."""
 from typing import List, Dict, Any, Type
-from backend.config import settings
+from config import settings
 from .search_providers.base import BaseSearchProvider
 from .search_providers.google import GoogleNewsProvider
 from .search_providers.linkedin import LinkedInProvider

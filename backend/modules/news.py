@@ -2,8 +2,8 @@
 
 from typing import Dict, Any, List
 from .base import BaseResearcher
-from backend.utils.search import get_search_results
-from backend.utils.llm import llm_service
+from utils.search import get_search_results
+from utils.llm import llm_service
 
 class NewsResearcher(BaseResearcher):
     """Researcher for news analysis."""

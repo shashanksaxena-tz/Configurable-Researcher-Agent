@@ -4,8 +4,8 @@ from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
 import random
 import json
-from backend.utils.search import get_search_results
-from backend.utils.llm import llm_service
+from utils.search import get_search_results
+from utils.llm import llm_service
 
 
 class BaseResearcher(ABC):
