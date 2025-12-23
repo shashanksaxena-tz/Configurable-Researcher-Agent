@@ -43,7 +43,7 @@ class ResearcherManager:
                 "trends": TrendsResearcher,
             }
     
-    async def perform_research(self, research_types: List[str]) -> List[ResearchResult]:
+    async def perform_research(self, research_types: List[str], selected_providers: List[str] = None) -> List[ResearchResult]:
         """Perform research for the specified types."""
         results = []
         
@@ -54,6 +54,13 @@ class ResearcherManager:
             researcher_class = self.MODULE_MAP[research_type]
             researcher = researcher_class(self.entity_name, self.entity_type)
             
+            if selected_providers:
+                # If specific providers are selected, we can pass them to the researcher
+                # However, BaseResearcher.research() signature might not accept it directly
+                # We should update BaseResearcher to store it or pass it.
+                # For now, let's inject it into the researcher instance if it supports it.
+                researcher.selected_providers = selected_providers
+
             data = await researcher.research()
             summary = researcher.generate_summary(data)
             confidence = researcher.calculate_confidence(data)

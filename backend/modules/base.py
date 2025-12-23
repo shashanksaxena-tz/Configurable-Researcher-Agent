@@ -15,6 +15,7 @@ class BaseResearcher(ABC):
         self.entity_name = entity_name
         self.entity_type = entity_type
         self.search_provider = search_provider
+        self.selected_providers: Optional[List[str]] = None
     
     @abstractmethod
     async def research(self) -> Dict[str, Any]:
@@ -35,9 +36,14 @@ class BaseResearcher(ABC):
         # 1. Search
         query = f"{self.entity_name} {query_suffix}"
 
-        # Use a mix of providers for broad coverage.
-        # DDG is good for general queries, Google News for news.
-        providers = ["duckduckgo", "google_news", "wikipedia"]
+        # Determine providers to use
+        # If user selected specific providers, use them.
+        # Otherwise default to a broad mix.
+        if self.selected_providers:
+            providers = self.selected_providers
+        else:
+            providers = ["duckduckgo", "google_news", "wikipedia"]
+
         search_results = get_search_results(query, limit=5, providers=providers)
 
         # 2. Prepare Context
