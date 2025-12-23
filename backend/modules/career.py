@@ -2,9 +2,6 @@
 
 from typing import Dict, Any
 from .base import BaseResearcher
-import random
-from datetime import datetime
-
 
 class CareerResearcher(BaseResearcher):
     """Researcher for career analysis."""
@@ -13,55 +10,35 @@ class CareerResearcher(BaseResearcher):
         """Perform career research."""
         
         if self.entity_type == "company":
-            data = {
-                "company_age": f"{random.randint(5, 50)} years",
-                "founding_year": datetime.now().year - random.randint(5, 50),
-                "key_milestones": [
-                    "Founded and initial funding",
-                    "First major product launch",
-                    "Market expansion",
-                    "IPO or major acquisition",
-                    "Industry leadership"
-                ],
-                "growth_stages": random.choice([
-                    "Startup to Unicorn",
-                    "Steady Growth",
-                    "Rapid Expansion",
-                    "Market Leader"
-                ]),
-                "employee_count": f"{random.randint(100, 10000)}+",
+            schema = {
+                "company_age": "string (e.g., '15 years')",
+                "founding_year": "integer",
+                "key_milestones": ["string"],
+                "growth_stages": "string (e.g., 'Rapid Expansion')",
+                "employee_count": "string (e.g., '1000+')",
             }
+            return await self.perform_ai_research("history founding employees milestones", schema)
         else:
-            data = {
+            schema = {
                 "work_history": [
                     {
-                        "company": f"Company {i+1}",
-                        "position": random.choice(["CEO", "Director", "VP", "Manager", "Specialist"]),
-                        "years": f"{random.randint(2, 10)} years"
+                        "company": "string",
+                        "position": "string",
+                        "years": "string"
                     }
-                    for i in range(3)
                 ],
-                "achievements": [
-                    "Industry award winner",
-                    "Published author",
-                    "Patent holder",
-                    "Speaker at major conferences"
-                ],
+                "achievements": ["string"],
                 "education": [
                     {
-                        "degree": random.choice(["MBA", "PhD", "Masters", "Bachelor's"]),
-                        "institution": random.choice(["Harvard", "MIT", "Stanford", "Yale"]),
-                        "field": random.choice(["Business", "Engineering", "Computer Science", "Economics"])
+                        "degree": "string",
+                        "institution": "string",
+                        "field": "string"
                     }
                 ],
-                "skills": random.sample([
-                    "Leadership", "Strategy", "Innovation", "Analytics",
-                    "Communication", "Project Management", "Technical Expertise"
-                ], 5),
-                "certifications": random.randint(3, 10),
+                "skills": ["string"],
+                "certifications": "integer",
             }
-        
-        return data
+            return await self.perform_ai_research("career history education resume", schema)
     
     def generate_summary(self, data: Dict[str, Any]) -> str:
         """Generate a summary of career analysis."""

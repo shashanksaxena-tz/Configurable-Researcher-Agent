@@ -5,12 +5,24 @@ from .search_providers.base import BaseSearchProvider
 from .search_providers.google import GoogleNewsProvider
 from .search_providers.linkedin import LinkedInProvider
 from .search_providers.wikipedia import WikipediaProvider
+from .search_providers.ddg import DuckDuckGoProvider
+from .search_providers.reddit import RedditProvider
+from .search_providers.github import GitHubProvider
+from .search_providers.instagram import InstagramProvider
+from .search_providers.youtube import YouTubeProvider
+from .search_providers.medium import MediumProvider
 
 # Registry of available providers
 PROVIDER_MAP: Dict[str, Type[BaseSearchProvider]] = {
     "google_news": GoogleNewsProvider,
     "linkedin": LinkedInProvider,
-    "wikipedia": WikipediaProvider
+    "wikipedia": WikipediaProvider,
+    "duckduckgo": DuckDuckGoProvider,
+    "reddit": RedditProvider,
+    "github": GitHubProvider,
+    "instagram": InstagramProvider,
+    "youtube": YouTubeProvider,
+    "medium": MediumProvider
 }
 
 def get_search_results(query: str, limit: int = 5, providers: List[str] = None) -> List[Dict[str, Any]]:

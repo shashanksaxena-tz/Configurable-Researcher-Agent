@@ -4,12 +4,14 @@ import Header from './components/Header';
 import ModuleSelector from './components/ModuleSelector';
 import ResearchForm from './components/ResearchForm';
 import ResultsDisplay from './components/ResultsDisplay';
+import ProviderSelector from './components/ProviderSelector';
 import { getModules, performResearch } from './utils/api';
 import { Loader, AlertCircle } from 'lucide-react';
 
 function App() {
   const [modules, setModules] = useState([]);
   const [selectedModules, setSelectedModules] = useState([]);
+  const [selectedProviders, setSelectedProviders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
@@ -55,6 +57,7 @@ function App() {
         entity_name: formData.entity_name,
         entity_type: formData.entity_type,
         research_types: selectedModules,
+        selected_providers: selectedProviders,
       });
       
       setResults(response);
@@ -148,6 +151,12 @@ function App() {
       {!loading && !results && (
         <>
           <ResearchForm onSubmit={handleResearch} loading={loading} />
+          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+            <ProviderSelector
+              selectedProviders={selectedProviders}
+              onSelectionChange={setSelectedProviders}
+            />
+          </div>
           {modules.length > 0 && (
             <ModuleSelector
               modules={modules}

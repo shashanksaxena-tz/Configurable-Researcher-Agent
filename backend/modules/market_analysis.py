@@ -2,8 +2,6 @@
 
 from typing import Dict, Any
 from .base import BaseResearcher
-import random
-
 
 class MarketAnalysisResearcher(BaseResearcher):
     """Researcher for market analysis."""
@@ -11,35 +9,18 @@ class MarketAnalysisResearcher(BaseResearcher):
     async def research(self) -> Dict[str, Any]:
         """Perform market analysis research."""
         
-        data = {
-            "market_share": f"{random.randint(5, 35)}%",
-            "market_position": random.choice([
-                "Market Leader", "Major Player", "Growing Competitor", "Challenger"
-            ]),
-            "competitors": random.sample([
-                "Competitor A", "Competitor B", "Competitor C",
-                "Competitor D", "Competitor E"
-            ], 3),
-            "industry_position": random.choice([
-                "Top 3", "Top 5", "Top 10", "Emerging Leader"
-            ]),
-            "growth_rate": f"{random.randint(5, 30)}% annually",
-            "market_size": f"${random.randint(10, 500)}B",
-            "target_markets": random.sample([
-                "North America", "Europe", "Asia Pacific",
-                "Latin America", "Middle East"
-            ], 3),
-            "competitive_advantages": random.sample([
-                "Technology leadership",
-                "Brand recognition",
-                "Cost efficiency",
-                "Customer loyalty",
-                "Innovation capacity",
-                "Market reach"
-            ], 3),
+        schema = {
+            "market_share": "string",
+            "market_position": "string",
+            "competitors": ["string"],
+            "industry_position": "string",
+            "growth_rate": "string",
+            "market_size": "string",
+            "target_markets": ["string"],
+            "competitive_advantages": ["string"],
         }
         
-        return data
+        return await self.perform_ai_research("market share analysis industry position growth competitors", schema)
     
     def generate_summary(self, data: Dict[str, Any]) -> str:
         """Generate a summary of market analysis."""

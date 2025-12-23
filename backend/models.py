@@ -17,13 +17,15 @@ class ResearchRequest(BaseModel):
     entity_name: str = Field(..., description="Name of the person or company to research")
     entity_type: EntityType = Field(..., description="Type of entity")
     research_types: List[str] = Field(..., description="List of research types to perform")
+    selected_providers: Optional[List[str]] = Field(None, description="List of search providers to use")
     
     class Config:
         json_schema_extra = {
             "example": {
                 "entity_name": "Tesla Inc",
                 "entity_type": "company",
-                "research_types": ["financial", "news", "sentiment"]
+                "research_types": ["financial", "news", "sentiment"],
+                "selected_providers": ["duckduckgo", "google_news", "linkedin"]
             }
         }
 

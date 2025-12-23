@@ -2,8 +2,6 @@
 
 from typing import Dict, Any
 from .base import BaseResearcher
-import random
-
 
 class CompetitorResearcher(BaseResearcher):
     """Researcher for competitor analysis."""
@@ -11,45 +9,24 @@ class CompetitorResearcher(BaseResearcher):
     async def research(self) -> Dict[str, Any]:
         """Perform competitor analysis research."""
         
-        competitors = []
-        for i in range(5):
-            competitors.append({
-                "name": f"Competitor {chr(65+i)}",
-                "market_share": f"{random.randint(5, 25)}%",
-                "strength": random.choice(["High", "Medium", "Low"]),
-                "threat_level": random.choice(["High", "Medium", "Low"])
-            })
-        
-        data = {
-            "main_competitors": competitors,
-            "competitive_advantages": random.sample([
-                "Superior technology",
-                "Stronger brand",
-                "Better pricing",
-                "Wider distribution",
-                "Customer service excellence",
-                "Innovation speed"
-            ], 3),
-            "market_positioning": random.choice([
-                "Premium", "Value", "Innovation Leader", "Quality Focus"
-            ]),
-            "differentiation": random.sample([
-                "Unique features",
-                "Better user experience",
-                "Faster service",
-                "More reliable",
-                "Better support"
-            ], 2),
-            "competitive_threats": random.sample([
-                "New market entrants",
-                "Technology disruption",
-                "Price competition",
-                "Changing regulations"
-            ], 2),
+        schema = {
+            "main_competitors": [
+                {
+                    "name": "string",
+                    "market_share": "string",
+                    "strength": "string (High/Medium/Low)",
+                    "threat_level": "string (High/Medium/Low)"
+                }
+            ],
+            "competitive_advantages": ["string"],
+            "market_positioning": "string",
+            "differentiation": ["string"],
+            "competitive_threats": ["string"],
         }
         
-        return data
+        return await self.perform_ai_research("competitors rivals market competition analysis", schema)
     
     def generate_summary(self, data: Dict[str, Any]) -> str:
         """Generate a summary of competitor analysis."""
-        return f"{self.entity_name} competes with {len(data.get('main_competitors', []))} major players with strong positioning in {data.get('market_positioning', 'N/A')} segment."
+        num_competitors = len(data.get('main_competitors', []) or [])
+        return f"{self.entity_name} competes with {num_competitors} major players with strong positioning in {data.get('market_positioning', 'N/A')} segment."

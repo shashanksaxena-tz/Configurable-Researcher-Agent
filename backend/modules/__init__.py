@@ -1,10 +1,10 @@
 """Module manager for the researcher."""
 
 from typing import Dict, Any, List
-from modules.base import BaseResearcher
+from backend.modules.base import BaseResearcher
 from typing import Dict, Any
-from config import RESEARCH_MODULES
-from models import ResearchResult
+from backend.config import RESEARCH_MODULES
+from backend.models import ResearchResult
 from datetime import datetime
 
 
@@ -19,16 +19,16 @@ class ResearcherManager:
         
         # Lazy import to avoid circular dependencies
         if not self.MODULE_MAP:
-            from modules.financial import FinancialResearcher
-            from modules.sentiment import SentimentResearcher
-            from modules.news import NewsResearcher
-            from modules.personality import PersonalityResearcher
-            from modules.hobbies import HobbiesResearcher
-            from modules.career import CareerResearcher
-            from modules.social_media import SocialMediaResearcher
-            from modules.market_analysis import MarketAnalysisResearcher
-            from modules.competitor import CompetitorResearcher
-            from modules.trends import TrendsResearcher
+            from backend.modules.financial import FinancialResearcher
+            from backend.modules.sentiment import SentimentResearcher
+            from backend.modules.news import NewsResearcher
+            from backend.modules.personality import PersonalityResearcher
+            from backend.modules.hobbies import HobbiesResearcher
+            from backend.modules.career import CareerResearcher
+            from backend.modules.social_media import SocialMediaResearcher
+            from backend.modules.market_analysis import MarketAnalysisResearcher
+            from backend.modules.competitor import CompetitorResearcher
+            from backend.modules.trends import TrendsResearcher
             
             ResearcherManager.MODULE_MAP = {
                 "financial": FinancialResearcher,
@@ -43,7 +43,7 @@ class ResearcherManager:
                 "trends": TrendsResearcher,
             }
     
-    async def perform_research(self, research_types: List[str]) -> List[ResearchResult]:
+    async def perform_research(self, research_types: List[str], selected_providers: List[str] = None) -> List[ResearchResult]:
         """Perform research for the specified types."""
         results = []
         
@@ -54,6 +54,13 @@ class ResearcherManager:
             researcher_class = self.MODULE_MAP[research_type]
             researcher = researcher_class(self.entity_name, self.entity_type)
             
+            if selected_providers:
+                # If specific providers are selected, we can pass them to the researcher
+                # However, BaseResearcher.research() signature might not accept it directly
+                # We should update BaseResearcher to store it or pass it.
+                # For now, let's inject it into the researcher instance if it supports it.
+                researcher.selected_providers = selected_providers
+
             data = await researcher.research()
             summary = researcher.generate_summary(data)
             confidence = researcher.calculate_confidence(data)
