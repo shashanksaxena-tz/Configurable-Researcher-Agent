@@ -2,8 +2,6 @@
 
 from typing import Dict, Any
 from .base import BaseResearcher
-import random
-
 
 class SocialMediaResearcher(BaseResearcher):
     """Researcher for social media analysis."""
@@ -11,35 +9,28 @@ class SocialMediaResearcher(BaseResearcher):
     async def research(self) -> Dict[str, Any]:
         """Perform social media research."""
         
-        platforms_data = []
-        for platform in ["Twitter/X", "LinkedIn", "Instagram", "Facebook"]:
-            platforms_data.append({
-                "name": platform,
-                "followers": f"{random.randint(10, 500)}K",
-                "engagement_rate": f"{random.uniform(2, 8):.1f}%",
-                "active": random.choice([True, True, True, False])
-            })
-        
-        data = {
-            "platforms": platforms_data,
-            "total_followers": f"{random.randint(100, 2000)}K",
+        schema = {
+            "platforms": [
+                {
+                    "name": "string (e.g. Twitter)",
+                    "followers": "string (e.g. 10K)",
+                    "engagement_rate": "string (e.g. 5%)",
+                    "active": "boolean"
+                }
+            ],
+            "total_followers": "string",
             "engagement": {
-                "likes": f"{random.randint(10, 100)}K avg",
-                "comments": f"{random.randint(1, 10)}K avg",
-                "shares": f"{random.randint(1, 5)}K avg"
+                "likes": "string",
+                "comments": "string",
+                "shares": "string"
             },
-            "content_themes": random.sample([
-                "Innovation", "Leadership", "Industry insights",
-                "Company updates", "Personal brand", "Thought leadership"
-            ], 4),
-            "posting_frequency": random.choice([
-                "Daily", "Multiple times per week", "Weekly", "Multiple times per day"
-            ]),
-            "reach": f"{random.randint(500, 5000)}K monthly",
-            "influence_score": round(random.uniform(7, 9.5), 1),
+            "content_themes": ["string"],
+            "posting_frequency": "string",
+            "reach": "string",
+            "influence_score": "float (0-10)",
         }
         
-        return data
+        return await self.perform_ai_research("social media profiles twitter linkedin instagram stats", schema)
     
     def generate_summary(self, data: Dict[str, Any]) -> str:
         """Generate a summary of social media analysis."""

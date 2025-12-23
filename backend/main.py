@@ -6,13 +6,13 @@ from fastapi.staticfiles import StaticFiles
 from typing import List
 import os
 
-from config import settings, RESEARCH_MODULES
-from models import (
+from backend.config import settings, RESEARCH_MODULES
+from backend.models import (
     ResearchRequest, ResearchResponse, HealthResponse,
     ModuleInfo, ReportRequest, EntityType
 )
-from modules import ResearcherManager
-from utils.report_generator import ReportGenerator
+from backend.modules import ResearcherManager
+from backend.utils.report_generator import ReportGenerator
 
 # Initialize FastAPI app
 app = FastAPI(

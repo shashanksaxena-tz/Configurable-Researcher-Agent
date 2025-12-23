@@ -5,12 +5,14 @@ from .search_providers.base import BaseSearchProvider
 from .search_providers.google import GoogleNewsProvider
 from .search_providers.linkedin import LinkedInProvider
 from .search_providers.wikipedia import WikipediaProvider
+from .search_providers.ddg import DuckDuckGoProvider
 
 # Registry of available providers
 PROVIDER_MAP: Dict[str, Type[BaseSearchProvider]] = {
     "google_news": GoogleNewsProvider,
     "linkedin": LinkedInProvider,
-    "wikipedia": WikipediaProvider
+    "wikipedia": WikipediaProvider,
+    "duckduckgo": DuckDuckGoProvider
 }
 
 def get_search_results(query: str, limit: int = 5, providers: List[str] = None) -> List[Dict[str, Any]]:
