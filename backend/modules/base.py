@@ -1,16 +1,17 @@
 """Base researcher module."""
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 import random
 
 
 class BaseResearcher(ABC):
     """Base class for all researcher modules."""
     
-    def __init__(self, entity_name: str, entity_type: str):
+    def __init__(self, entity_name: str, entity_type: str, search_provider: Optional[Any] = None):
         self.entity_name = entity_name
         self.entity_type = entity_type
+        self.search_provider = search_provider
     
     @abstractmethod
     async def research(self) -> Dict[str, Any]:

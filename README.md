@@ -7,7 +7,7 @@ A highly customizable AI-powered research agent with a modern, animated interfac
 ### Research Modules
 - **Financial Analysis**: Revenue, market cap, stock performance, profitability metrics
 - **Sentiment Analysis**: Public opinion, reviews, social sentiment scoring
-- **News Analysis**: Recent news, press releases, media coverage
+- **News Analysis**: **(REAL DATA)** Recent news, press releases, media coverage from Google News
 - **Personality Analysis**: Leadership style, communication patterns, traits
 - **Hobbies & Interests**: Personal interests, activities, passions
 - **Career Analysis**: Professional background, achievements, education
@@ -56,7 +56,12 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Start the backend server:
+4. Run Tests (New):
+```bash
+pytest backend/tests
+```
+
+5. Start the backend server:
 ```bash
 python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
@@ -201,7 +206,7 @@ Generate a report from research results
 
 ## 🎯 Future Enhancements
 
-- [ ] Integration with real APIs (OpenAI, news APIs, financial APIs)
+- [x] Integration with real APIs (Partially implemented: News)
 - [ ] User authentication and saved searches
 - [ ] Advanced data visualization with charts
 - [ ] Export to multiple formats (Excel, Word, etc.)
