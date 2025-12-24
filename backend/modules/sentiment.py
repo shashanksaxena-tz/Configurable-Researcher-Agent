@@ -19,8 +19,7 @@ class SentimentResearcher(BaseResearcher):
             "sources_analyzed": "integer (estimated)",
         }
         
+        # We rely on the BaseResearcher to generate the narrative summary now.
         return await self.perform_ai_research("reviews sentiment opinions public perception", schema)
     
-    def generate_summary(self, data: Dict[str, Any]) -> str:
-        """Generate a summary of sentiment analysis."""
-        return f"{self.entity_name} maintains {data.get('positive_sentiment', 'N/A')} positive sentiment with an overall score of {data.get('overall_score', 'N/A')}/10 based on public analysis."
+    # Removed the override for generate_summary to use the BaseResearcher's narrative logic.
