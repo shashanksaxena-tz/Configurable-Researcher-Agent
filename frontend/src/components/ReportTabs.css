@@ -1,0 +1,186 @@
+/**
+ * ReportTabs Component Styles
+ * Premium tabbed interface per FR-011, FR-015
+ */
+
+.report-tabs {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.report-tabs--empty {
+    padding: var(--spacing-600);
+    text-align: center;
+}
+
+.report-tabs__placeholder {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+/* Tab Navigation */
+.report-tabs__nav {
+    display: flex;
+    gap: var(--spacing-100);
+    padding: var(--spacing-300) var(--spacing-400);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.report-tabs__nav::-webkit-scrollbar {
+    display: none;
+}
+
+.report-tabs__tab {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+    padding: var(--spacing-250) var(--spacing-400);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+}
+
+.report-tabs__tab:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+}
+
+.report-tabs__tab--active {
+    color: var(--accent-gold);
+}
+
+.report-tabs__tab-label {
+    font-weight: 600;
+}
+
+.report-tabs__tab-badge {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-50) var(--spacing-150);
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+}
+
+.report-tabs__tab--active .report-tabs__tab-badge {
+    background: var(--accent-gold-bg);
+    color: var(--accent-gold-dark);
+}
+
+/* Animated indicator */
+.report-tabs__indicator {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background: var(--accent-gold);
+    border-radius: 3px 3px 0 0;
+}
+
+/* Tab Panels */
+.report-tabs__panels {
+    padding: var(--spacing-500);
+    min-height: 400px;
+}
+
+.report-tabs__panel {
+    max-width: 65ch;
+    /* Optimal reading width */
+    margin: 0 auto;
+}
+
+.report-tabs__panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-400);
+    padding-bottom: var(--spacing-300);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.report-tabs__section-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.report-tabs__section-meta {
+    display: flex;
+    gap: var(--spacing-300);
+    font-size: var(--font-size-xs);
+}
+
+.report-tabs__category {
+    padding: var(--spacing-50) var(--spacing-200);
+    background: var(--navy-100);
+    color: var(--navy-700);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.report-tabs__citations {
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+}
+
+.report-tabs__citations::before {
+    content: '📚';
+    font-size: 0.8em;
+}
+
+/* Content Styling */
+.report-tabs__content {
+    font-size: var(--font-size-md);
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.report-tabs__content p {
+    margin-bottom: var(--spacing-400);
+}
+
+/* Citation superscripts */
+.report-tabs__cite {
+    color: var(--accent-gold);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.report-tabs__cite:hover {
+    color: var(--accent-gold-dark);
+    text-decoration: underline;
+}
+
+/* Dark mode */
+[data-theme="dark"] .report-tabs {
+    background: var(--navy-800);
+}
+
+[data-theme="dark"] .report-tabs__nav {
+    background: var(--navy-900);
+}
+
+[data-theme="dark"] .report-tabs__category {
+    background: var(--navy-700);
+    color: var(--slate-200);
+}

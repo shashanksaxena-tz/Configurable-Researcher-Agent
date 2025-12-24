@@ -1,0 +1,95 @@
+/**
+ * MainLayout Component Styles
+ * Application-wide layout
+ */
+
+.main-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+}
+
+/* Navigation */
+.main-layout__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-400) var(--spacing-600);
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-layout__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+}
+
+.main-layout__logo-icon {
+    font-size: 1.5rem;
+}
+
+.main-layout__logo-text {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.main-layout__theme-toggle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-full);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.main-layout__theme-toggle:hover {
+    background: var(--bg-hover);
+    transform: scale(1.05);
+}
+
+/* Main content */
+.main-layout__main {
+    flex: 1;
+    padding: var(--spacing-600) var(--spacing-400);
+}
+
+/* Footer */
+.main-layout__footer {
+    padding: var(--spacing-400);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-light);
+}
+
+.main-layout__footer p {
+    margin: 0;
+}
+
+/* Dark mode */
+[data-theme="dark"] .main-layout {
+    background: var(--navy-900);
+}
+
+[data-theme="dark"] .main-layout__nav {
+    background: var(--navy-800);
+}
+
+[data-theme="dark"] .main-layout__footer {
+    background: var(--navy-800);
+}

@@ -1,5 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, ExternalLink, TrendingUp } from 'lucide-react';
+import { Download, TrendingUp, ShieldCheck } from 'lucide-react';
+import ExecutiveSummary from './ExecutiveSummary';
+import SourceList from './SourceList';
 
 const ResultsDisplay = ({ results, entityName, reportId }) => {
   const container = {
@@ -25,23 +27,22 @@ const ResultsDisplay = ({ results, entityName, reportId }) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      style={{ padding: '20px' }}
+      style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="glass-card"
         style={{
-          padding: '30px',
-          marginBottom: '30px',
+          padding: '40px 0',
           textAlign: 'center',
+          marginBottom: '40px'
         }}
       >
-        <h2 style={{ fontSize: '2rem', color: '#333', marginBottom: '15px' }}>
-          Research Complete for <span style={{ color: '#667eea' }}>{entityName}</span>
+        <h2 style={{ fontSize: '2.5rem', fontFamily: 'Merriweather, serif', color: '#111827', marginBottom: '10px' }}>
+          Research Dossier: <span style={{ color: '#059669', borderBottom: '3px solid #059669' }}>{entityName}</span>
         </h2>
-        <p style={{ color: '#666', fontSize: '1.1rem', marginBottom: '20px' }}>
-          {results.length} analysis modules completed successfully
+        <p style={{ color: '#6b7280', fontSize: '1.1rem' }}>
+          Intelligence gathered from {results.length} distinct analysis vectors
         </p>
 
         {reportId && (
@@ -52,19 +53,21 @@ const ResultsDisplay = ({ results, entityName, reportId }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             style={{
+              marginTop: '20px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '10px',
               padding: '12px 24px',
-              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              background: '#1f2937',
               color: '#fff',
               textDecoration: 'none',
-              borderRadius: '8px',
-              fontWeight: 'bold',
+              borderRadius: '6px',
+              fontWeight: '600',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
             }}
           >
-            <Download size={20} />
-            Download Full Report (PDF)
+            <Download size={18} />
+            Download Executive Report (PDF)
           </motion.a>
         )}
       </motion.div>
@@ -74,129 +77,90 @@ const ResultsDisplay = ({ results, entityName, reportId }) => {
         initial="hidden"
         animate="show"
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-          gap: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '40px',
         }}
       >
         <AnimatePresence>
-          {results.map((result, index) => (
+          {results.map((result) => (
             <motion.div
               key={result.research_type}
               variants={item}
-              className="glass-card"
               style={{
-                padding: '25px',
-                position: 'relative',
+                background: '#fff',
+                borderRadius: '12px',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
                 overflow: 'hidden',
+                border: '1px solid #f3f4f6'
               }}
             >
-              {/* Animated background accent */}
-              <motion.div
-                initial={{ x: '-100%' }}
-                animate={{ x: '100%' }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  ease: 'easeInOut',
-                }}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  height: '100%',
-                  width: '50%',
-                  background: 'linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent)',
-                  pointerEvents: 'none',
-                }}
-              />
+              {/* Header Strip */}
+              <div style={{
+                background: '#f8fafc',
+                padding: '20px 30px',
+                borderBottom: '1px solid #e5e7eb',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <h3 style={{ fontSize: '1.5rem', color: '#1e293b', fontWeight: 'bold', margin: 0 }}>
+                  {result.title}
+                </h3>
 
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '15px' }}>
-                  <h3 style={{ fontSize: '1.5rem', color: '#333', fontWeight: 'bold' }}>
-                    {result.title}
-                  </h3>
-                  <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                  >
-                    <TrendingUp size={24} color="#667eea" />
-                  </motion.div>
-                </div>
-
-                <div
-                  style={{
-                    background: 'rgba(102, 126, 234, 0.1)',
-                    padding: '15px',
-                    borderRadius: '8px',
-                    marginBottom: '15px',
-                  }}
-                >
-                  <p style={{ color: '#555', lineHeight: '1.6' }}>{result.summary}</p>
-                </div>
-
-                <div style={{ marginBottom: '15px' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      marginBottom: '8px',
-                    }}
-                  >
-                    <span style={{ color: '#666', fontWeight: '500' }}>Confidence Score:</span>
-                    <span
-                      style={{
-                        background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                        color: '#fff',
-                        padding: '4px 12px',
-                        borderRadius: '12px',
-                        fontWeight: 'bold',
-                      }}
-                    >
-                      {(result.confidence * 100).toFixed(0)}%
-                    </span>
-                  </div>
-                  
-                  {/* Animated confidence bar */}
-                  <div style={{ background: '#e0e0e0', height: '8px', borderRadius: '4px', overflow: 'hidden' }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${result.confidence * 100}%` }}
-                      transition={{ duration: 1, delay: index * 0.2 }}
-                      style={{
-                        height: '100%',
-                        background: 'linear-gradient(90deg, #10b981, #059669)',
-                      }}
-                    />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', color: '#64748b' }}>
+                    <ShieldCheck size={18} />
+                    <span>Confidence: <strong>{(result.confidence * 100).toFixed(0)}%</strong></span>
                   </div>
                 </div>
+              </div>
 
-                <div style={{ borderTop: '1px solid #e0e0e0', paddingTop: '15px' }}>
-                  <h4 style={{ fontSize: '1rem', color: '#666', marginBottom: '10px' }}>Key Data Points:</h4>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {Object.entries(result.data).slice(0, 4).map(([key, value]) => (
+              <div style={{ padding: '30px' }}>
+                {/* Executive Summary Section */}
+                {result.data.narrative_summary ? (
+                   <ExecutiveSummary summary={result.data.narrative_summary} />
+                ) : (
+                  <div style={{ padding: '20px', background: '#f0fdf4', borderLeft: '4px solid #10b981', marginBottom: '20px', color: '#374151' }}>
+                    {result.summary}
+                  </div>
+                )}
+
+                {/* Structured Data Grid */}
+                <h4 style={{ fontSize: '1rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '15px' }}>Key Metrics & Data</h4>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                  gap: '15px',
+                  marginBottom: '30px'
+                }}>
+                  {Object.entries(result.data)
+                    .filter(([key]) => !['narrative_summary', 'confidence_score', 'key_sources', '_raw_search_results'].includes(key))
+                    .map(([key, value]) => (
                       <div
                         key={key}
                         style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          padding: '8px',
-                          background: 'rgba(0, 0, 0, 0.02)',
-                          borderRadius: '4px',
+                          padding: '15px',
+                          background: '#f8fafc',
+                          borderRadius: '8px',
+                          border: '1px solid #f1f5f9'
                         }}
                       >
-                        <span style={{ color: '#666', fontSize: '0.9rem' }}>
-                          {key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                        </span>
-                        <span style={{ color: '#333', fontSize: '0.9rem', fontWeight: '500' }}>
-                          {typeof value === 'object' ? JSON.stringify(value).slice(0, 30) + '...' : String(value).slice(0, 50)}
-                        </span>
+                        <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '5px', textTransform: 'capitalize' }}>
+                          {key.replace(/_/g, ' ')}
+                        </div>
+                        <div style={{ fontSize: '1.1rem', color: '#0f172a', fontWeight: '600' }}>
+                           {Array.isArray(value)
+                             ? value.join(", ")
+                             : (typeof value === 'object' ? JSON.stringify(value).slice(0, 30) + '...' : String(value))}
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
+
+                {/* Sources Section */}
+                <SourceList sources={result.data._raw_search_results || result.data.key_sources} />
+
               </div>
             </motion.div>
           ))}

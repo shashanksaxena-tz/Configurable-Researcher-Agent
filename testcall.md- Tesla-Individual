@@ -1,0 +1,573 @@
+Request URL
+http://localhost:8000/api/v1/research
+Request Method
+POST
+
+
+{
+  "entity_name": "tesla ",
+  "entity_type": "individual",
+  "research_types": [
+    "financial",
+    "sentiment",
+    "news",
+    "personality",
+    "market_analysis",
+    "social_media",
+    "career",
+    "hobbies",
+    "competitor",
+    "trends"
+  ],
+  "selected_providers": [
+    "google_news",
+    "linkedin",
+    "wikipedia",
+    "duckduckgo",
+    "reddit",
+    "github",
+    "instagram",
+    "youtube",
+    "medium"
+  ]
+}
+
+
+Response:
+
+{
+    "entity_name": "tesla ",
+    "entity_type": "individual",
+    "results": [
+        {
+            "research_type": "financial",
+            "title": "Financial Analysis",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "Elon Musk's $1 trillion pay package approved by Tesla shareholders - BBC",
+                        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBvaFRaUko5UWM2a2dOWkNRaHdFTklpTVduMkxEajlkWWxXbWVqdWJ2WHg5aWVrNlRSamJqX3RrYmgtOTNJUlNZQ0RROElYT1g3dXBnMjRwZDVDZ9IBX0FVX3lxTE5Gdzk5UUJYMEFEdkV5a3E3UUQ0ZDcxUlpZYXViR2U4ckpCb0Zna3BwVENxc2Z4VVpuR2JsQURkN3RnVFl6YWNHNkthUE1CY0N4eUhPRVV4bGQwZzVOY1BV?oc=5",
+                        "published_date": "Fri, 07 Nov 2025 08:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Elon Musk's Net Worth Just Hit A New Record—Here's How He Made $500 Billion - Investopedia",
+                        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOdmczTzRBYWlJUVVyZExjLUJUUHQwMDBGSUNhTXpwcHVVVzJ5SXJKYnhocUZhT2xYODJ2MVdXcUt5ZUtmWlEzVV85eWpxZ1dwWHZ3ODltcXZHQWdwVEVkQ284THE3NVlmSjFrcG1zSkdJY3JITW51c1hDMFhqV2dpaU0xNk9EQQ?oc=5",
+                        "published_date": "Thu, 02 Oct 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "What Is Elon Musk's Net Worth? - moneywise.com",
+                        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9DYkVrVjFadDZDNWJsZVVsZi15eTZvNzh5Z3E3dDFpeHRRZjVLU2MtQk5zdWh0LUJPVUdSb2l5SmI1TFo4WjJqM3lhamdZX1VzRmtPMVJKM0ozWGRFaUt3ZGNvTTlCOFdsQlNlLXVR?oc=5",
+                        "published_date": "Fri, 23 May 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Olamichael . O - Frontec Financial | LinkedIn",
+                        "link": "https://www.linkedin.com/in/olamichael-o-264642179",
+                        "published_date": "",
+                        "source": "LinkedIn"
+                    },
+                    {
+                        "title": "Ronnie Kaldani - Realtor at Chapman Real Estate Group | LinkedIn",
+                        "link": "https://www.linkedin.com/in/ronnie-kaldani-b859b4210",
+                        "published_date": "",
+                        "source": "LinkedIn"
+                    },
+                    {
+                        "title": "Jon Amrozowicz - Vibrant Ingredients | LinkedIn",
+                        "link": "https://www.linkedin.com/in/jon-amrozowicz-68b576a",
+                        "published_date": "",
+                        "source": "LinkedIn"
+                    },
+                    {
+                        "title": "Wikipedia: Tesla, Inc.",
+                        "link": "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Tesla, Inc. ( TEZ-lə or   TESS-lə) is an American multinational automotive and clean energy company."
+                    },
+                    {
+                        "title": "Wikipedia: Howard Lutnick",
+                        "link": "https://en.wikipedia.org/wiki/Howard_Lutnick",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Howard William Lutnick (born July 14, 1961) is an American businessman and government official who has served as the 41st United States secretary of commerce since February 2025.\nIn 1983, Lutnick was hired at Cantor Fitzgerald under the mentorship of the firm's founder, B. Gerald Cantor."
+                    },
+                    {
+                        "title": "Wikipedia: Criticism of Tesla, Inc.",
+                        "link": "https://en.wikipedia.org/wiki/Criticism_of_Tesla,_Inc.",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Tesla, Inc. has been criticized for its cars, workplace culture, business practices, and occupational safety."
+                    }
+                ]
+            },
+            "summary": "Analysis completed for tesla ",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:25:57.695386"
+        },
+        {
+            "research_type": "sentiment",
+            "title": "Sentiment Analysis",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "Thanks, Elon—It Sure Is Weird Being a Tesla Owner Right Now - MotorTrend",
+                        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNWENKdjFYSHpQWDd6YTBsbmJST1RFMmtrRXJ6SUswZ05oSEpoUVZaUkFpcXBNU3JES0l1NVhscThQMHZTRUlETGI4cTR5VGd1Z0d5ZzBJWWtHVVdhTXA2R012bzFCUWZTNXpZSXhYOFI4UHJUekh0VGxTR3NuTE5hMnFOdVZydjg5MmJKZ0xSMG9aQWNiYjZIMHE5dGV4ZFR6dUpUUTVnMmhZQUVtUFpNX2h6ZDA2aTBxNEJjaVN5Q29tWTlI?oc=5",
+                        "published_date": "Thu, 03 Apr 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Tesla faces growing negative perception, latest survey shows - ArenaEV - ArenaEV",
+                        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOQ3J0MUJ5ZFV1T2JUY2RwTjVEUVZWc01UWmNYN21MUGYwckFlVXk0amU1b3E3Mm0tWm52bENPU21JTFA3MjFfQlZfZXQ4N1Ytc0Z4QlhRYWM3WklLazM4dEtHbW5qTzNwZW9sM2xtLWhxbW5EeGFaOWJrNndrVGVwWkNpSdIBf0FVX3lxTE05VXhNUUdCeHRMZmE4WVEwVk5pVDdNbnZuQmJmVkVXdHRUX3dnbW5yRmg5dDVxdFhxN0NYRXkxMHJtSHVqMzFEb0tNUmJrejVNOXdhUi1wSVpVTkNvd2UxenZCLU9jTkMySlg4RF94enljeHI4XzloeEk1bmw0VjA?oc=5",
+                        "published_date": "Fri, 02 May 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Tesla registrations — and public opinion — are in a free fall - The Verge",
+                        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZkVjUlFtUTYxaHVuaG04eTNCWE5tbWdqbU10Z2RUZ01KUENSbkpyOVRKVFplM3V2RGhfRjVFdHVKY2ZrMS1LWHRyS3paNGQ4b3dvZ29rM0pRZXI5NlF2bWozRzZfbWY1OEdqdV9RTUEySjRKSHd4RHhJcmdBWVhyeFl2dlpLYTV6X1Jr?oc=5",
+                        "published_date": "Fri, 14 Mar 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Wikipedia: Second presidency of Donald Trump",
+                        "link": "https://en.wikipedia.org/wiki/Second_presidency_of_Donald_Trump",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Donald Trump's second and current tenure as the president of the United States began upon his inauguration as the 47th president on January 20, 2025. Trump, a member of the Republican Party, had previously served as the 45th president from 2017 to 2021 and lost re-election to the Democratic nominee Joe Biden in the 2020 presidential election, took office after defeating the Democratic incumbent vice president Kamala Harris in the 2024 presidential election."
+                    },
+                    {
+                        "title": "Wikipedia: Chinese Exclusion Act",
+                        "link": "https://en.wikipedia.org/wiki/Chinese_Exclusion_Act",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "The Chinese Exclusion Act of 1882 was a United States federal law signed by President Chester A. Arthur on May 6, 1882, prohibiting all immigration of Chinese laborers for 10 years. The law made exceptions for travelers and diplomats."
+                    },
+                    {
+                        "title": "Wikipedia: List of topics characterized as pseudoscience",
+                        "link": "https://en.wikipedia.org/wiki/List_of_topics_characterized_as_pseudoscience",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "This is a list of topics that have been characterized as pseudoscience by academics or researchers. Detailed discussion of these topics may be found on their main pages."
+                    }
+                ]
+            },
+            "summary": "Analysis completed for tesla ",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:26:13.481262"
+        },
+        {
+            "research_type": "news",
+            "title": "News Analysis",
+            "data": {
+                "recent_news": [
+                    {
+                        "headline": "Report Focuses on Deaths Due to Tesla Doors That Couldn't Be Opened Following a Crash - Car and Driver",
+                        "date": "Mon, 22 Dec 2025 21:28:40 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNRTluRGxYQWkzSWU0aTRpdW1vVk1OYi1hN0NWQzBMSjJRa0ZpaWpSR2R6SUdiNTNUVGU1THNlM19nQktjRHQ5LWEyNl9oRUFMZHo3ZGdyX1NLazlyMUtkdlNkLUhhaURVV1FBSFphbFRESF9qakVxVmtvYzdfZU1RajBKeGV5dEZKT0ln?oc=5"
+                    },
+                    {
+                        "headline": "Elon Musk Demanded Tesla’s Electric Doors Despite Safety Worries - Bloomberg.com",
+                        "date": "Mon, 22 Dec 2025 22:00:08 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQQi1PLUlLUlAtazgxenprcFF0Um9FZ2lGbkJvblRwQ2ZpY000VnJMeUp6eDZ6MXpCbzl2bFFYeEFMOU1GTFNQVXA0TDVLckdtVlU4WEUtbWh6MGxzUjdlemRBYzhXUzNQV1JRRkZkdS1nblBYT3BlbjVLYndMalZVWGl6alZNYUVtUGRiS1g0dkF6dTB1X2lTQXAzcU9vdk04cFJBeTVUcDNpZTJIZ1E?oc=5"
+                    },
+                    {
+                        "headline": "The Dark Side Of Tesla's Sleek Door Handle Tech - InsideEVs",
+                        "date": "Wed, 24 Dec 2025 03:04:27 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE45Tk1YeGJUSUlQYmcyTF96MW50dVNDcmdrT1YwYTVmUmh3eDZDaC1CWG1QT25xaHlJX2c1MlkxZWJMT2FrbHpsZ0NpNEp2enRZX1FlSktLa19xNE5wUEhXUHM1RWQ5N2YwdVN5RkFpc3JhZkpqVTZRMmFYWQ?oc=5"
+                    },
+                    {
+                        "headline": "Tesla’s EU sales slump continues as Chinese rivals thrive - The Guardian",
+                        "date": "Tue, 23 Dec 2025 20:02:00 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQRG9NejlqeThOc2R6UDFCMTdoV0tOZmk0Mmh4TGhKR0VGOHpzeFVoYU9oczBlZ1lFM2ZfTVprdm13OUhBdGlWaVRMYlZxTmVaTkdSd1RmZEI2M2JWS1lDZlJnZVEybTUycDBITDJSZHptcGhuZHhsd01zMlBWc1hRMENkNlpSTTlkVGtZZU81enJtNVJBR2wwSGlBSGRUQWZYQUgwS09MWGFHUQ?oc=5"
+                    },
+                    {
+                        "headline": "Tesla Loses Ground in Europe as BYD Sales Surge 222% - Yahoo Finance",
+                        "date": "Tue, 23 Dec 2025 15:45:23 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNY1Q0WG00ZXlQOXNGdUdQeTVPVDBJZ3JiMUp1OVYxWDdsVmM4Vmc5NzFnNHNNRjM4OE1NU0gyS0gxTVo3Zk1HVXg2Yy1QZC1lVThrSm5nbm1tNGlYYnpGdmhzbUxIZnFiMTJiZV9wMTBLd1c0ZWlEWXd6cnFQMVdWcQ?oc=5"
+                    },
+                    {
+                        "headline": "Tesla’s EV sales keep falling, but Wall Street stays focused on robotaxis - MarketWatch",
+                        "date": "Tue, 23 Dec 2025 16:26:00 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMiugNBVV95cUxQTURqY0FlVUJaM2ZIa1NiT3pnNlltZU03ZTZfanZCSEN6OExuT1ZLb18tNktBczcycVE5OExIXzdNN2h2RXJaY1cxVzJmZFNUUWxaWGtZVzFVa0dtYlU2dHpxWXlsVENhNlFneU9qRVZBRXVwMjBKU0tfWmJKLUVVbDJWOXQtUWZzcTlhVUtRVzU1eXlqalItRHJKeFlKS1hRVW1iaTljVmVITUxwSjVJaHJIQ19ac2kzUlVvNm02Z2VpeE9zS2FUcnJqaFIyUjFGWHVnRHRpZk9yNHNsaXI3VUthMnNYSnZlenhOQ1l0bXhpSDVsTXFTelUxT2t6dG54N2ZzVEVsSXN2WkVHTVk5QVB3QlhWVjZUclFQMThTeHlEbk16RnYwQWs2VEllNWFvNGgyWDF1VWYwMjFTV1NEQXFvc0NXZWpOMlJGaDYzeGNTNEFIdXAtcUllQ2hIYi12YTEtTG5HV1ctYnYtNEFVMEo0cjFzNXRJN1cwQl93bjkzLTluaEZYNEVHSklVVE5vY0pEV2wzeEhSa0I4cjFTRG5zWnZyNGY2d1JuRXdKdGFZc2o4SWZZM2F3?oc=5"
+                    },
+                    {
+                        "headline": "Ford, Hyundai and yes, Tesla make the list for best-selling SUVs of 2025. See the list - USA Today",
+                        "date": "Wed, 24 Dec 2025 10:06:00 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxORVVRcDdmc1RBM3EzQ0lkZjFKRnpRY1FFTDdES1FybUhhSnRvdjBxWUtpODV4YTRhQTNaMnkzYURfNl9LU3VOUW5WYXZlTTE0cXp2NlZDS3hFTkFpR0pURWlzZ0g1SlRKT05rXy05czMwVFljWlN3eG1wakZDcThzbDc4bzl3UExudGdVNk9UaTE2NGcyd19pSUVMdFV4V2dubTgxYWdWZkJid0dlWkZCelEtRFg0aXM0VkE?oc=5"
+                    },
+                    {
+                        "headline": "Tesla Comes One Step Closer to Self-Driving With a New Camera Patent - Autoblog",
+                        "date": "Tue, 23 Dec 2025 19:30:00 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQcVNIbVEyYXhueEZkNnFfT2t5YVJiQkJack1KOUNrWHNNWkQteUI2RnVVWEhHZEdza05FQS1FeHk5WG1TTFViTHVLVmJGMWhlcXZKbm14eG5hVXdmUXJESHRTVWdyeG9ycnBLVFdWcGV6ZURHZWZtRDYzbEFjZXBzOQ?oc=5"
+                    },
+                    {
+                        "headline": "Tesla driver crashes during livestream desmonstrating ‘Full Self-Driving’ features - Electrek",
+                        "date": "Tue, 23 Dec 2025 19:43:00 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNMmhwdkZ1RUV1bUtBVVRKNnM4R2UycTlsSlE0RDdxbTRwUlJ6bEF4M0Z6VWFBN2w4OUxmTWhiMVBWendaR25XdWJBcFFBTFdUX1FyNUdjSzhYVmoyQjV4ejNDaFVYbWVRSV9XRF9jUDJfWHFOSjlLTHB0a2xXSE5uRThIMlJOMV9udzM5UVRUNnhjTkR6WWgzdWpWODZxT1djdmJVUVZ2U0c?oc=5"
+                    },
+                    {
+                        "headline": "Opinion: I tried Tesla Autopilot on home turf, and it behaved way better than in Britain - Top Gear",
+                        "date": "Tue, 23 Dec 2025 05:05:22 GMT",
+                        "source": "Google News",
+                        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQLWlhOUNnUGNHanVlYmVHaDE1ellyaTN0RWUtb1dZYlNOZkFCZU9nOExZQnE4bUJZNElNblp2UjJIV04tNXowNjJKWWoxLTJURlRYSUhVZi1BLXduSjd4OTdSQzFxU0JXOWpFOFROclBiOEJfalNjSXZOajhkX3Y1Q1MxQnlFRGx3Znd3NFRETm9qWTBmcHB6c3h1ejQ3Rmc1el9LZGUwLUNKSXQzeUNUVXdBS1dVdWM?oc=5"
+                    }
+                ],
+                "total_articles": 10,
+                "press_releases": 0,
+                "media_mentions": 0,
+                "trending_topics": [],
+                "sentiment_breakdown": {
+                    "positive": "0%",
+                    "neutral": "0%",
+                    "negative": "0%"
+                }
+            },
+            "summary": "tesla  has 10 recent articles analyzed.",
+            "confidence": 0.5,
+            "timestamp": "2025-12-24T16:26:14.331700"
+        },
+        {
+            "research_type": "personality",
+            "title": "Personality Analysis",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "From Jeff Bezos to Elon Musk: Zodiac signs of richest billionaires in the world unveiled - Times of India",
+                        "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPQ0w2bHBOUFpNQUJubnFXdTFNcGFreC1pXzJzT1NKQnB5SVpjdHBvUno0RDc3RUpBZHZSeTlyWUFDRnl5WTNpS2lqV1BhbS1SVEI1UFdwSXpLYnQ3ZlhTN3g2SWpucnJTTzRlVnZvWW5mcjQ5V3haT2swRUxRZ1JGMWQ5Rzl0cS0tdjVfeTdOV3NKelQtd2ljcGc3eHhZQ3hfeWpQMEtOTmxQN0d1dXZxN0JjYjE0OG5FMk16aXdUTmJ3Ti1CTzRVWW1CcGhIUzA0bHMwWkdTb1hOQWhJWmp2MWNPN0dKeU1QTmVRVTJpSHJfYWNPTjVlMnRsa09HMWtHc1o5SUFmY2vSAY4CQVVfeXFMTlE2Ym51QVkyRzNPNExidTQtUmxha3VnU2M5eXhncWRkMnNmRWd3YUNMTW1UYk9VWE5uR2FyeUhUczQ4akR1N1pXRkJtLVBKTDBUMnZnam54VldCM3RQSFV5WXVjRW5xZXAxVFo3ekpfeEw3RlZBU1JfZ2dsWDFjUklPdVhwMjlGcC1BeU11ZjROT1BQcFZCejUxMjhnS1FidGJsVjZSUmhmRzNvaVlkakplUDB1Q0VkdzlLSWxweUN6S2ItVUxNV1UtTVhoSk9iRE0tRzRyM29pZUFKd1ZKdktvUHM4Wk9SM2JLUGxVdmduc3MxVTVOVE1LYUNGMld2dzhZam1wel9hZUtGVUpR?oc=5",
+                        "published_date": "Thu, 05 Jun 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Elon Musk’s Leadership Style Bad For Business And Mental Health, Experts Warn - Forbes",
+                        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPOTlCQ0xyd2lYdVprTG1LRDBXRGNtbk9TWl8xS1J6Q1M5NFF3YnY5dzFrUXE2NUozbzVjaWVBWGJGQTFDWV8ySFFhdVJUNE5Sb1VjYl9veDJkTzc3Rlo0cE5MdVRtTkx0Y2NtNDFtRzVwVHQzakw1R0lHbGE3a250NFRDWllibkZaTldNYjhGSWcyQnVUSEJJX3dSb2lxMERpNnZfb1hUS25hRk93WDdqVEJ1eDNscWk1bHNvQWJNZGY1bTVacFlyWUln?oc=5",
+                        "published_date": "Mon, 21 Nov 2022 08:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Elon Musk’s Leadership Gaps At Tesla Come To A Head - CleanTechnica",
+                        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNZnBlMzlYYWtYdXNXSU12QkNNRDlNcTM5akRRRTBjVzV0NFViQkU2b3ZhNDhTY3NDM2s0dHBJYnFSLXAwQWlVcGd5WWdfaTQwaTk3cURBenc2dG5leC01b0lyNm1XU3pvbEJNSHZ0UEE3TGdZdFBTR0Q0cnR5TkxGV0tkdDd0ck81UkJzRG9KdXJ6d9IBlwFBVV95cUxONzFXd1M2N0RvMk8tZEk3NTJjVS1Uc2FseldyTzVFRzVhTS1vZ3VyYTZRR0FVTlRhVnJzY0N0d015OUNzLXVqbkZyLTVFT1dveFhWbVRIZlRKX2U1aTJtYXNtc2kycW5hRHVwMmdic002UHFfcXZEZ20zN3lsNlNuOER3SGNlbnE4SVdxaHJIejZfUUN4LU5r?oc=5",
+                        "published_date": "Wed, 24 Apr 2024 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Wikipedia: Raymond Cattell",
+                        "link": "https://en.wikipedia.org/wiki/Raymond_Cattell",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Raymond Bernard Cattell (20 March 1905 – 2 February 1998) was a British-American psychologist, known for his psychometric research into intrapersonal psychological structure. His work also explored the basic dimensions of personality and temperament, the range of cognitive abilities, the dynamic dimensions of motivation and emotion, the clinical dimensions of abnormal personality, patterns of group syntality and social behavior, applications of personality research to psychotherapy and learning theory, predictors of creativity and achievement, and many multivariate research methods including the refinement of factor analytic methods for exploring and measuring these domains."
+                    },
+                    {
+                        "title": "Wikipedia: Cult of personality",
+                        "link": "https://en.wikipedia.org/wiki/Cult_of_personality",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "A cult of personality, or a cult of the leader, is the result of an effort to create an idealized and heroic image of an admirable leader, often through unquestioning flattery and praise.\nHistorically, it has been developed through techniques such as the manipulation of the mass media, the dissemination of propaganda, the staging of spectacles, the manipulation of the arts, the instilling of patriotism, and government-organized demonstrations and rallies."
+                    }
+                ]
+            },
+            "summary": "tesla  exhibits N/A characteristics with a N/A leadership approach.",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:26:30.999774"
+        },
+        {
+            "research_type": "market_analysis",
+            "title": "Market Analysis",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "Analyzing Tesla In Comparison To Competitors In Automobiles Industry - Benzinga",
+                        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOT3YzeXlYa3FXZndhX0MzTHNFcWVNRU1ROG5RR3ZKeVZYc01LRXpObnhKMnNydU9kZTB6NkJVc3ZoMi1DQndnZDNIR1NkNF9nZkQza183QW5XOUZoSkxYX0JIa0JkeFJyM0hraHd4S0ZIWHdxcmVTeTBnYm1DMG5LZFlVNnhBa1FlN25hYld3Z21KTWxTdkdkbjBvbUp1RjVoMDZhemFEb3QzUllqU01EenJsSW5HT2JQLWNNS3E5aw?oc=5",
+                        "published_date": "Mon, 22 Dec 2025 15:00:36 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Exclusive: Tesla market share in US drops to lowest since 2017 as competition heats up - Reuters",
+                        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQbGQ2cnFabmkwd0hNczBsU1JQeWxzcUZfYk9kMWI2TWI5dWZ2ejExX2RFTnQ0blljczMwTEEwSmNVZFZ2dDN2dUxzRS0xM3Azd2hiZ0pvamJzdHhUN0VqbGpneXB6cWVuV2dfNTNJWTUtbGM1Q0x1OEc2Y0s3blpITHhJXzFWRXRBeF9UQTlXTF93ZnVyNjhoQmxIUHFoanJKZ2cweW5mWWlMQzhUMUVzRmVkNjk1T3pwNmtPZ1hFNlZJR250RkM2RGRuVVY?oc=5",
+                        "published_date": "Mon, 08 Sep 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Competitor Analysis: Evaluating Tesla And Competitors In Automobiles Industry - Benzinga",
+                        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQeTBDVHYwMlVRRVNrZVdqTjQ0MlNOS0NvVEMwUlFRdjlDeFZ4UFBmR0I1Njl5M1pEQlJFNFNXWG9KZ0xfeVZELS1kR3JvY0xpT2JGSEpweFh3YkxqVVhHTHQ3UXB0TzQyLUhEN0RwejR1VE5DbEFZa1NVSmYxbG9iR3FCdVp5R2ItbGZmSHVlZDFRWGs1Y29aWGxZNVRqMlI0eHlnaEY1N3VlNkJzTjdFUEtkWUNpc3JoMHhndGJoSTYxNU1NT2NEMWl3?oc=5",
+                        "published_date": "Fri, 19 Dec 2025 15:00:25 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Wikipedia: History of Tesla, Inc.",
+                        "link": "https://en.wikipedia.org/wiki/History_of_Tesla,_Inc.",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Tesla, Inc. is an electric vehicle manufacturer and clean energy company founded in San Carlos, California in 2003 by American entrepreneurs Martin Eberhard and Marc Tarpenning."
+                    },
+                    {
+                        "title": "Wikipedia: Automotive industry in China",
+                        "link": "https://en.wikipedia.org/wiki/Automotive_industry_in_China",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "The automotive industry in mainland China has been the largest in the world measured by automobile unit production since 2008. As of 2024, mainland China is also the world's largest automobile market both in terms of sales and ownership."
+                    },
+                    {
+                        "title": "Wikipedia: Criticism of Tesla, Inc.",
+                        "link": "https://en.wikipedia.org/wiki/Criticism_of_Tesla,_Inc.",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Tesla, Inc. has been criticized for its cars, workplace culture, business practices, and occupational safety."
+                    }
+                ]
+            },
+            "summary": "tesla  holds N/A market share with N/A growth rate.",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:26:43.975382"
+        },
+        {
+            "research_type": "social_media",
+            "title": "Social Media Presence",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "Social platforms: active user gender distribution 2025 - Statista",
+                        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOU21tNnVIV3Rhcy0tR2RaX0lpTExZUFNkR3oxQzNXbjNQY015d2VRdFBvVFFHMmZUTXhvQV95bWxCWkZ3MGV1VlE1amJOT3VtTmtJa3lSR0d3LU95aVVzeGlzT09QNnh0cWxJMGFhUWN5cnFjclpBX0hENmhONExQWUwxZGZqVnhFNFU5WXoxUGRKNEdYMVhxaVVFblZOMFYxVGo5ZWVycXhfeTFlVm91MEk3U2g?oc=5",
+                        "published_date": "Tue, 25 Nov 2025 08:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Social Media Statistics 2025:Platforms, Users, and Behaviors - SQ Magazine",
+                        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5YQXJndUFCWG5fQU03aDAzN3RobWl5UFgyOWNRNnlDb3pFaTVxUENIMUNUcGYtclNiY1hNcHUzN3BzWXhFTGE1YjJFaWVXaWltSm5jTUlVSVZldXJHSGc?oc=5",
+                        "published_date": "Wed, 01 Oct 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Sprout Social Alternatives for Small Business & Agency Teams (2025) - Exploding Topics",
+                        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBScTZUWkZvU1ZVY2h4Y3VPeFNLSEw3RjhDTFVpd1YwZ0MxUEt1THBxajNZWk9CbnlNc3Q0QlJmWGNFSElvUC1ncUVqTmhHLXNKRnIwN2xOOHFPRkxOSW82S1E2WHQxWkVpeWtj?oc=5",
+                        "published_date": "Fri, 09 May 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Wikipedia: Big Tech",
+                        "link": "https://en.wikipedia.org/wiki/Big_Tech",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Big Tech, also referred to as the tech giants or tech titans, is a collective term for the largest and most influential technology companies in the world. It commonly denotes the five dominant firms in the U.S. technology industry—Microsoft, Apple, Alphabet (Google), Amazon, and Meta (Facebook)—which are also the largest companies in the world by market capitalization."
+                    },
+                    {
+                        "title": "Wikipedia: Founders Fund",
+                        "link": "https://en.wikipedia.org/wiki/Founders_Fund",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Founders Fund is an American venture capital fund formed in 2005 and based in San Francisco. The fund has roughly $17 billion in total assets under management as of 2025."
+                    }
+                ]
+            },
+            "summary": "tesla  has N/A total followers across platforms with an influence score of N/A/10.",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:26:59.066367"
+        },
+        {
+            "research_type": "career",
+            "title": "Career Analysis",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "Elon Musk Criticized President Trump’s Spending Bill. Now, He’s Leaving the Administration - Biography",
+                        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE83UDVIVndxRW1LaXBJaktxTnlkUWJBT0U3RTdKRHFlTHFjVlFaenQ3SFNJdTkyREFBazBKZmd0MHJzX3VMSGZRUnU5ZjY3d1NSbGgtNWI5cVB2V1NraFdod1VB?oc=5",
+                        "published_date": "Thu, 29 May 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "The people in Elon Musk’s DOGE universe - TechCrunch",
+                        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE44ZGpPZnhVLUp4d3d6Y3djeDNFNmd3VFhxRzZmcGlJYUJJZ0RFMzIxQWVGQU5adFU2TW5yR1dhdHgxdW1pOFFjMVhFQTZWVDRUM0ZaNER4V0Y5Z1lIbWRHU25VQXlrUXlNaE5veF9FS2RmQV9ValNpN0d1SWU?oc=5",
+                        "published_date": "Tue, 20 May 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Want to work for Elon Musk? He doesn’t care about your college - Times of India",
+                        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOdmxqYTRKSHUwLWNidmU0ZS1BM3VMRW1IY3hoZW1hZkFnVm1sUzlXdlIyUk12YUlvR2tLM2VfS2tGWmhkSnNCWlhGdzRPekpCSHo3WTAza3YzcVkybXNtYnM2X0o3Yi1UYVhVNXhoWDIzOUxKMVg2aEhWNlRwTE9TVUpzUTVIOFFmNUZPcnA0ZGFjUU1WNUZyYURTTk9GOVZZRmUyenpidGt5dUdmaUtQNU5iN1ItWDU2VElzMlpjU3NHSGNfa20yeC1nZk5IVTlqaGdN0gHYAUFVX3lxTE9iM0tCVzBDd2RhVWJiWlh5T1RHYndJRFlfS01vRHQxamo4Mkpvc3VtTVpHTmZYZzdVVWdxeUhJVmJsNm5GcU9lblZFcEtYTzlZVGRjaXBQMERWQ3NEaFNlZVFicS1SOHIxcW5LRnA1MFNfOTNRWE1DbGdGMElSeXFxZWpNUU4wMmlkeTJxdkhMRGJ4ejN6cG9LV0FCUmFZN05NaUJTSTEyRjVGaWVwWV92anN1UDlQWEkxMHBjOHA1XzA5bkFrN1BIdERqRlByV0huXzZqR19zdQ?oc=5",
+                        "published_date": "Wed, 15 Jan 2025 08:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Wikipedia: Tesla, Inc.",
+                        "link": "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Tesla, Inc. ( TEZ-lə or   TESS-lə) is an American multinational automotive and clean energy company."
+                    },
+                    {
+                        "title": "Wikipedia: Public image of Elon Musk",
+                        "link": "https://en.wikipedia.org/wiki/Public_image_of_Elon_Musk",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Businessman and U.S. political figure Elon Musk is a focal point of extensive press coverage, with public attitudes towards him fluctuating at various points throughout his career.\nAlthough his ventures have been highly influential within their separate industries starting in the 2000s, Musk only became a public figure in the early 2010s."
+                    }
+                ]
+            },
+            "summary": "tesla  has diverse professional experience with notable achievements in the industry.",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:27:09.757925"
+        },
+        {
+            "research_type": "hobbies",
+            "title": "Hobbies & Interests",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "Most popular hobbies & activities in the U.S. 2025 - Statista",
+                        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNWW1kYS1wbkZLY290WkNxUEZrVnNjaU54NzhrMHV4N3p1MWZtdEFZY1lRcFk5cjBBQ3FXLU1qSE9ZNEFqQUFXN3NmVUEzM0JRczgxb2s0WDNUYTBNUVZEVmNraTV1MHF5em9uM0VaeDdzTS1QQVZ6WlhBZDNiYzJveG9fUVdKdVhEUXN3XzlDRmJlQQ?oc=5",
+                        "published_date": "Tue, 25 Nov 2025 08:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "5 reasons why you should revisit your childhood hobby as an adult - Yahoo Finance",
+                        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPWkFfQlBWb0YtY09va29uRExiSXJjc3BwODdlNTdwZzVBZE8tbmV0SW9ZNzZpYXNLR2J1bHJaWUJaYjJadENFc2F0RDhmMGRfTEVDdVQyNjJmNVhydDE1aVBjWHBVVkdES2JnWTNtV0lTSkNOb3czNmlCY0xmU0lnWVZjMA?oc=5",
+                        "published_date": "Sat, 25 Feb 2023 08:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "What Does Tesla CEO Elon Musk Do For Fun? - InsideEVs",
+                        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOMlMwQXpJb1FHTVRaSUZrd2JYMkdLQWR0TGIwenhIN3NDRk5ZeHVpWl9TWjRkdVlKcFgtVE5VaVRqWHgwQU1ZMDdmaURKcFdNYkcxaklURE9YMFBLWFFRb0JPVC0yUUkyWm04WHR5cGNJWTJPbE83eWkxZ3lRc1dTOFZDSQ?oc=5",
+                        "published_date": "Mon, 02 Nov 2020 08:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Wikipedia: Influencer",
+                        "link": "https://en.wikipedia.org/wiki/Influencer",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "A social media influencer, also known as an online influencer, or simply influencer, is a person who builds a grassroots online presence through engaging content such as photos, videos, and updates. This is done by using direct audience interaction to establish authenticity, expertise, and appeal, and by standing apart from traditional celebrities by growing that person's platform through social media rather than pre-existing fame."
+                    },
+                    {
+                        "title": "Wikipedia: Jef Raskin",
+                        "link": "https://en.wikipedia.org/wiki/Jef_Raskin",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Jef Raskin (born Jeff Raskin; March 9, 1943 – February 26, 2005) was an American human–computer interface expert who conceived and began leading the Macintosh project at Apple in the late 1970s.\n\n\n== Early life and education ==\nJef Raskin was born in New York City to a secular Jewish family, whose surname is a matronymic from \"Raske\", Yiddish nickname for Rachel."
+                    },
+                    {
+                        "title": "Wikipedia: History of radio",
+                        "link": "https://en.wikipedia.org/wiki/History_of_radio",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "The history of radio had many contributors, beginning with the scientific discovery of electromagnetic radiation (radio waves) in the late 1800s, followed by technological development of improved devices for producing and receiving transmissions.\nRadio was at first employed for \"wireless telegraphy\", using on-off signalling such as Morse code, initially for private point-to-point communication."
+                    }
+                ]
+            },
+            "summary": "tesla  enjoys N/A and is passionate about N/A.",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:27:25.553359"
+        },
+        {
+            "research_type": "competitor",
+            "title": "Competitor Analysis",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "Competitor Analysis: Evaluating Tesla And Competitors In Automobiles Industry - Benzinga",
+                        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQeTBDVHYwMlVRRVNrZVdqTjQ0MlNOS0NvVEMwUlFRdjlDeFZ4UFBmR0I1Njl5M1pEQlJFNFNXWG9KZ0xfeVZELS1kR3JvY0xpT2JGSEpweFh3YkxqVVhHTHQ3UXB0TzQyLUhEN0RwejR1VE5DbEFZa1NVSmYxbG9iR3FCdVp5R2ItbGZmSHVlZDFRWGs1Y29aWGxZNVRqMlI0eHlnaEY1N3VlNkJzTjdFUEtkWUNpc3JoMHhndGJoSTYxNU1NT2NEMWl3?oc=5",
+                        "published_date": "Fri, 19 Dec 2025 15:00:25 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Forbes Endorses Tesla FSD as Autonomy Leader Toward 2030 Dominance - WebProNews",
+                        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNNWNMdkRIY2dUOW12Z1lLb2pxem1Zd1ZISkVMLVpmbXVTZGVqajE4djVDMXZwd3VmMnhleXZSV2hLZDFSU2d2cEVTbmwyWHZwLS10Wk1PNS15aTlmNmxReTVHNkgzeEhWMnhOYzg5M2E2MTgyWG1sRi1XdmRIbERQUTFXakNzQXNfY3ZHZGlTVWw5bHZhSTZtQ2N3?oc=5",
+                        "published_date": "Mon, 22 Dec 2025 23:31:48 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Tesla's New Competitor Is a Huge Problem - Nasdaq",
+                        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBTMURGenFLTE5qRjBhUlA2UFQ2cng5SG9lSFNxMlVpaDQtT3ZYNk5UTWNHSzU1VUdsbkxXanBGNHRmV19fUTI2OENNZ2NZT19yRlFkU1BJbGNwTHV4elhsX1FfNzEwQkp0TXBkTzBpMmhBcl96NDIw?oc=5",
+                        "published_date": "Wed, 29 Oct 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Wikipedia: Tesla, Inc.",
+                        "link": "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Tesla, Inc. ( TEZ-lə or   TESS-lə) is an American multinational automotive and clean energy company."
+                    },
+                    {
+                        "title": "Wikipedia: Tesla Autopilot",
+                        "link": "https://en.wikipedia.org/wiki/Tesla_Autopilot",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Tesla Autopilot is an advanced driver-assistance system (ADAS) developed by Tesla, Inc. that provides partial vehicle automation, corresponding to Level 2 automation as defined by SAE International."
+                    },
+                    {
+                        "title": "Wikipedia: Space launch market competition",
+                        "link": "https://en.wikipedia.org/wiki/Space_launch_market_competition",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Space launch market competition is the manifestation of market forces in the launch service provider business. In particular it is the trend of competitive dynamics among payload transport capabilities at diverse prices having a greater influence on launch purchasing than the traditional political considerations of country of manufacture or the national entity using, regulating or licensing the launch service."
+                    }
+                ]
+            },
+            "summary": "tesla  competes with 0 major players with strong positioning in N/A segment.",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:27:40.047518"
+        },
+        {
+            "research_type": "trends",
+            "title": "Trends Analysis",
+            "data": {
+                "_raw_search_results": [
+                    {
+                        "title": "Tesla News Today: Key Developments Influencing Tesla and Its Stock - vocal.media",
+                        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxONGZiMEhabmhQOU9JXzB5blBWcC1uMm5vNmNTaFVGSklsMjhTVUt3U1JJaEFOVmFRN3EwTV9BcGlkVFRNQ0ZrRGVPYlViMkl2eVQxaFNMRk9YWlB1MkZBNjhfSFZhQWZvSUxTZDYyMVI5QVkzbk1lMHRBZ2J2RVRPaE1GLWlHWURfb0hhR203LVdTMGx6WlRj?oc=5",
+                        "published_date": "Thu, 18 Dec 2025 06:51:04 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Tesla's Market Rollercoaster: Navigating Innovation, Scrutiny, and Future Growth - FinancialContent",
+                        "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOSWNVWWpZUFVlOUZTbmktN3R2UmJOWGVibEpTbUwwSllPSDJWWTNOWGVMMmF6TFZqdUhrNlUxV01pemRNeVA5RzNGdFhORG5mb0dKdTRmRUpjbjR3TnNMY2M1alItWmpuclFHeDFobmY4X25fR1VIY3MzV0pfRm9xckM1Y3JIb0otZWd6Q3dERkhheWRhdU1CVDdkLVhCUjNjaG0xUVdqejVYRXAzalUzUnpicXBiWDNXZmVEUmx1TkE5cUhUaV96SkExZldoS0JINGNCWVRLZjdhX0tYWkpLbEgtaVlqSjQ?oc=5",
+                        "published_date": "Sun, 19 Oct 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "The Museum of Future Inventions: A Journey Through the Technologies of Tomorrow - Futurist Speaker",
+                        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNTC1sNjY2OHU5NXpiWUR2RDZzVDJ0YkE1UldnOVJRSDFPRnl4M29KbWRwZnJNZWxDYlFUYlQ5UEpiM1Bha0Rvd050X043R2RqeFlWRTc3TURtaVJtSjY5el9rdjJsUDFMZlRiQlkydGtibnEwV1p1RmEtbnpXU0o4REZpR0xPd3dqYjBiT3BLVUNDVlhlRmRnVHZvalJhN05LNHVKWDgyVE5nck9jdFdmUmdJVkV2TDBIQ0l1THQzVFpOQWM?oc=5",
+                        "published_date": "Thu, 24 Jul 2025 07:00:00 GMT",
+                        "source": "Google News"
+                    },
+                    {
+                        "title": "Wikipedia: Tesla, Inc.",
+                        "link": "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "Tesla, Inc. ( TEZ-lə or   TESS-lə) is an American multinational automotive and clean energy company."
+                    },
+                    {
+                        "title": "Wikipedia: Internet of things",
+                        "link": "https://en.wikipedia.org/wiki/Internet_of_things",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "The Internet of things (IoT) describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet or other communication networks. The IoT encompasses electronics, communication, and computer science engineering."
+                    },
+                    {
+                        "title": "Wikipedia: History of self-driving cars",
+                        "link": "https://en.wikipedia.org/wiki/History_of_self-driving_cars",
+                        "published_date": "",
+                        "source": "Wikipedia",
+                        "snippet": "The history of self-driving cars began with experiments in radio-control during the 1920's, and the development of advanced driver assistance (ADAS) after WWII. Trials of self-driving vehicles began in the 1950s with the first semi-autonomous car developed in 1977 by Japan's Tsukuba Mechanical Engineering Laboratory. \nIn the United States, Carnegie Mellon University's Navlab began semi-autonomous vehicle projects in 1984, funded by the Defense Advanced Research Projects Agency (DARPA)."
+                    }
+                ]
+            },
+            "summary": "tesla  is positioned to benefit from trends in N/A with a N/A outlook.",
+            "confidence": 1.0,
+            "timestamp": "2025-12-24T16:27:54.913185"
+        }
+    ],
+    "total_results": 10,
+    "timestamp": "2025-12-24T16:27:54.935453",
+    "report_id": "6820563c"
+}

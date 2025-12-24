@@ -1,0 +1,148 @@
+/**
+ * CitationTooltip Component Styles
+ */
+
+.citation-tooltip__trigger {
+    color: var(--accent-gold);
+    cursor: pointer;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    vertical-align: super;
+    transition: color 0.2s;
+    padding: 0 2px;
+}
+
+.citation-tooltip__trigger:hover {
+    color: var(--accent-gold-dark);
+    text-decoration: underline;
+}
+
+.citation-tooltip__trigger:focus {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.citation-tooltip__popup {
+    z-index: 1000;
+    width: 320px;
+    max-width: 90vw;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-400);
+}
+
+.citation-tooltip__arrow {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--bg-primary);
+    border-left: 1px solid var(--border-light);
+    border-top: 1px solid var(--border-light);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.citation-tooltip__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-200);
+}
+
+.citation-tooltip__badge {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--spacing-50) var(--spacing-150);
+    background: var(--accent-gold-bg);
+    color: var(--accent-gold-dark);
+    border-radius: var(--radius-sm);
+}
+
+.citation-tooltip__close {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: var(--radius-full);
+}
+
+.citation-tooltip__close:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.citation-tooltip__title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-200);
+    line-height: 1.4;
+}
+
+.citation-tooltip__excerpt {
+    font-size: var(--font-size-xs);
+    font-style: italic;
+    color: var(--text-secondary);
+    margin: 0 0 var(--spacing-300);
+    padding: var(--spacing-200);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent-gold);
+    line-height: 1.5;
+}
+
+.citation-tooltip__meta {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-300);
+}
+
+.citation-tooltip__timestamp {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+}
+
+.citation-tooltip__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-100);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--accent-gold);
+    text-decoration: none;
+    padding: var(--spacing-200) var(--spacing-300);
+    background: var(--accent-gold-bg);
+    border-radius: var(--radius-md);
+    transition: all 0.2s;
+}
+
+.citation-tooltip__link:hover {
+    background: var(--accent-gold);
+    color: var(--navy-900);
+}
+
+/* Dark mode */
+[data-theme="dark"] .citation-tooltip__popup {
+    background: var(--navy-800);
+    border-color: var(--navy-600);
+}
+
+[data-theme="dark"] .citation-tooltip__arrow {
+    background: var(--navy-800);
+    border-color: var(--navy-600);
+}

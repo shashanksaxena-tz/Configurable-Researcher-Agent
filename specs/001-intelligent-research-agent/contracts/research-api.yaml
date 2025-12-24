@@ -1,0 +1,517 @@
+openapi: 3.0.3
+info:
+  title: Intelligent Research Agent API
+  description: |
+    API for the agentic research workflow system. Provides endpoints for:
+    - Generating research plans from natural language queries
+    - Executing deep research with recursive search
+    - Cross-referencing and verification
+    - Narrative report synthesis
+    - Citation and source management
+  version: 1.0.0
+  contact:
+    name: Research Agent Team
+
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+  - url: https://api.research-agent.example.com
+    description: Production server
+
+tags:
+  - name: research
+    description: Core research workflow endpoints
+  - name: citations
+    description: Source citation and verification
+  - name: status
+    description: Health and progress monitoring
+
+paths:
+  /api/research/plan:
+    post:
+      tags: [research]
+      summary: Generate research plan
+      description: |
+        Takes a natural language query and generates a structured research plan
+        with sub-questions prioritized by importance.
+      operationId: createResearchPlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query:
+                  type: string
+                  minLength: 10
+                  maxLength: 500
+                  description: User's research question
+                  example: "Research Elon Musk's companies and their performance"
+                depth_level:
+                  type: string
+                  enum: [quick, standard, comprehensive]
+                  default: standard
+                  description: |
+                    - quick: 3-5 sub-questions, ~1 minute
+                    - standard: 5-7 sub-questions, ~3 minutes
+                    - comprehensive: 7-10 sub-questions, ~5 minutes
+      responses:
+        '200':
+          description: Research plan successfully generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResearchPlan'
+        '400':
+          description: Invalid query or parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: LLM or system error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/research/execute:
+    post:
+      tags: [research]
+      summary: Execute research workflow
+      description: |
+        Execute the full Plan-Execute-Verify-Synthesize workflow.
+        This is a long-running operation (1-5 minutes). 
+        Use WebSocket or polling /api/research/{id}/status for progress updates.
+      operationId: executeResearch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query:
+                  type: string
+                  minLength: 10
+                  maxLength: 500
+                  example: "Research Tesla's Q4 2023 performance"
+                depth_level:
+                  type: string
+                  enum: [quick, standard, comprehensive]
+                  default: standard
+                async:
+                  type: boolean
+                  default: true
+                  description: If true, returns immediately with request_id. If false, waits for completion.
+      responses:
+        '202':
+          description: Research started (async mode)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  request_id:
+                    type: string
+                    format: uuid
+                    example: "550e8400-e29b-41d4-a716-446655440000"
+                  status:
+                    type: string
+                    enum: [planning, executing, verifying, synthesizing]
+                    example: "planning"
+                  estimated_completion_seconds:
+                    type: integer
+                    example: 180
+        '200':
+          description: Research completed (sync mode)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NarrativeReport'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/research/{request_id}/status:
+    get:
+      tags: [status]
+      summary: Check research progress
+      description: Poll this endpoint to check the status of a long-running research request
+      operationId: getResearchStatus
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Research request ID from /api/research/execute
+      responses:
+        '200':
+          description: Current research status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  request_id:
+                    type: string
+                    format: uuid
+                  status:
+                    type: string
+                    enum: [planning, executing, verifying, synthesizing, completed, failed]
+                  progress_percent:
+                    type: integer
+                    minimum: 0
+                    maximum: 100
+                    description: Estimated completion percentage
+                  current_stage:
+                    type: string
+                    description: Human-readable current activity
+                    example: "Executing search for sub-question 3 of 5"
+                  completed_at:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  error:
+                    type: string
+                    nullable: true
+                    description: Error message if status is 'failed'
+        '404':
+          description: Research request not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/research/{request_id}/report:
+    get:
+      tags: [research]
+      summary: Retrieve completed research report
+      description: Get the final narrative report with inline citations
+      operationId: getResearchReport
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Research report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NarrativeReport'
+        '404':
+          description: Report not found or not yet completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/research/{request_id}/citations:
+    get:
+      tags: [citations]
+      summary: Get all sources for a research report
+      description: Returns a complete bibliography with source metadata
+      operationId: getResearchCitations
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of all sources cited in the report
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  request_id:
+                    type: string
+                    format: uuid
+                  total_sources:
+                    type: integer
+                    example: 12
+                  sources:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Source'
+        '404':
+          description: Research request not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/citations/fact/{fact_id}:
+    get:
+      tags: [citations]
+      summary: Get source details for a specific fact
+      description: Used when user clicks an inline citation in the report
+      operationId: getFactCitation
+      parameters:
+        - name: fact_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Fact/claim UUID from report content
+      responses:
+        '200':
+          description: Citation details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fact_id:
+                    type: string
+                    format: uuid
+                  fact_text:
+                    type: string
+                    example: "Elon Musk's net worth was $180B in December 2023"
+                  confidence:
+                    type: number
+                    format: float
+                    minimum: 0
+                    maximum: 1
+                    example: 0.92
+                  sources:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Source'
+                    description: All sources supporting this fact
+                  verified:
+                    type: boolean
+                    description: Whether this fact was cross-referenced
+                  discrepancy:
+                    type: object
+                    nullable: true
+                    description: Present if this fact conflicts with others
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      conflicting_facts:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                            source_url:
+                              type: string
+                      resolution:
+                        type: string
+                        description: How the conflict was resolved
+        '404':
+          description: Fact not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/health:
+    get:
+      tags: [status]
+      summary: Health check
+      description: Check if API is operational and LLM backends are accessible
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  llm_backends:
+                    type: object
+                    properties:
+                      openai:
+                        type: boolean
+                        example: true
+                      google:
+                        type: boolean
+                        example: true
+                  search_providers:
+                    type: object
+                    properties:
+                      duckduckgo:
+                        type: boolean
+                      wikipedia:
+                        type: boolean
+
+components:
+  schemas:
+    ResearchPlan:
+      type: object
+      required: [id, request_id, sub_questions]
+      properties:
+        id:
+          type: string
+          format: uuid
+        request_id:
+          type: string
+          format: uuid
+        sub_questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubQuestion'
+          minItems: 3
+          maxItems: 10
+        estimated_time_seconds:
+          type: integer
+          example: 180
+        created_at:
+          type: string
+          format: date-time
+
+    SubQuestion:
+      type: object
+      required: [id, text, priority, depth]
+      properties:
+        id:
+          type: string
+          format: uuid
+        text:
+          type: string
+          minLength: 10
+          maxLength: 200
+          example: "What is Tesla's revenue from Q4 2023?"
+        priority:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: 1=highest priority
+        depth:
+          type: integer
+          minimum: 0
+          maximum: 3
+          description: Recursion depth (0=root question)
+        parent_question_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: For recursive sub-questions
+
+    NarrativeReport:
+      type: object
+      required: [id, request_id, executive_summary, sections]
+      properties:
+        id:
+          type: string
+          format: uuid
+        request_id:
+          type: string
+          format: uuid
+        executive_summary:
+          type: string
+          minLength: 200
+          maxLength: 1000
+          description: 1-minute read overview in natural language
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportSection'
+          minItems: 1
+        total_word_count:
+          type: integer
+          minimum: 300
+        total_sources:
+          type: integer
+          minimum: 3
+        quality_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Quality metric based on word count, sources, verification
+        generated_at:
+          type: string
+          format: date-time
+
+    ReportSection:
+      type: object
+      required: [id, title, content, order]
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          example: "Financial Overview"
+        content:
+          type: string
+          description: |
+            Markdown text with inline citation markers in format [cite:fact-uuid].
+            Frontend parses these and replaces with clickable citation components.
+          example: "Tesla's Q4 revenue was $25B [cite:550e8400-e29b-41d4-a716-446655440000]..."
+        order:
+          type: integer
+          description: Display order of sections
+          example: 1
+        word_count:
+          type: integer
+          minimum: 300
+
+    Source:
+      type: object
+      required: [url, title, domain, access_timestamp]
+      properties:
+        url:
+          type: string
+          format: uri
+          example: "https://bloomberg.com/news/tesla-q4-2023"
+        title:
+          type: string
+          example: "Tesla Reports Record Q4 Revenue"
+        domain:
+          type: string
+          example: "bloomberg.com"
+        credibility_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          example: 0.95
+        access_timestamp:
+          type: string
+          format: date-time
+          description: When we fetched this source
+        fact_count:
+          type: integer
+          description: Number of facts extracted from this source
+          example: 5
+
+    Error:
+      type: object
+      required: [error, message]
+      properties:
+        error:
+          type: string
+          example: "invalid_request"
+        message:
+          type: string
+          example: "Query must be between 10 and 500 characters"
+        details:
+          type: object
+          nullable: true
+          description: Additional error context
