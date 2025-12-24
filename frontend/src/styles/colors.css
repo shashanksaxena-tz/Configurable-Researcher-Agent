@@ -1,0 +1,187 @@
+/* Color Palette for Intelligent Research Agent
+   Premium design using deep navy, slate, and gold accents
+   Per FR-015: System MUST implement a color scheme using deep navy, slate, and gold/muted accents
+*/
+
+:root {
+    /* Primary - Navy */
+    --navy-950: #0a0f1a;
+    --navy-900: #0f1729;
+    --navy-800: #1a2332;
+    --navy-700: #243048;
+    --navy-600: #2e3d5e;
+    --navy-500: #3d5178;
+
+    /* Neutrals - Slate */
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748b;
+    --slate-400: #94a3b8;
+    --slate-300: #cbd5e1;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --slate-50: #f8fafc;
+
+    /* Accent - Gold */
+    --gold-600: #d97706;
+    --gold-500: #f59e0b;
+    --gold-400: #fbbf24;
+    --gold-300: #fcd34d;
+    --gold-200: #fde68a;
+
+    /* Semantic Colors */
+    --success-500: #22c55e;
+    --success-400: #4ade80;
+    --warning-500: #f59e0b;
+    --warning-400: #fbbf24;
+    --error-500: #ef4444;
+    --error-400: #f87171;
+    --info-500: #3b82f6;
+    --info-400: #60a5fa;
+
+    /* Background Colors (Dark Mode Default) */
+    --bg-primary: var(--navy-900);
+    --bg-secondary: var(--navy-800);
+    --bg-tertiary: var(--navy-700);
+    --bg-elevated: var(--slate-800);
+    --bg-surface: var(--navy-950);
+
+    /* Text Colors (Dark Mode Default) */
+    --text-primary: var(--slate-100);
+    --text-secondary: var(--slate-300);
+    --text-tertiary: var(--slate-400);
+    --text-muted: var(--slate-500);
+    --text-accent: var(--gold-400);
+
+    /* Border Colors */
+    --border-primary: var(--slate-700);
+    --border-secondary: var(--slate-600);
+    --border-accent: var(--gold-500);
+
+    /* Interactive States */
+    --hover-highlight: rgba(251, 191, 36, 0.1);
+    --active-highlight: rgba(251, 191, 36, 0.2);
+    --focus-ring: var(--gold-400);
+}
+
+/* Utility Classes */
+
+/* Backgrounds */
+.bg-primary {
+    background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+    background-color: var(--bg-secondary);
+}
+
+.bg-tertiary {
+    background-color: var(--bg-tertiary);
+}
+
+.bg-elevated {
+    background-color: var(--bg-elevated);
+}
+
+.bg-surface {
+    background-color: var(--bg-surface);
+}
+
+/* Text Colors */
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-tertiary {
+    color: var(--text-tertiary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-accent {
+    color: var(--text-accent);
+}
+
+/* Semantic Text Colors */
+.text-success {
+    color: var(--success-400);
+}
+
+.text-warning {
+    color: var(--warning-400);
+}
+
+.text-error {
+    color: var(--error-400);
+}
+
+.text-info {
+    color: var(--info-400);
+}
+
+/* Border Colors */
+.border-primary {
+    border-color: var(--border-primary);
+}
+
+.border-secondary {
+    border-color: var(--border-secondary);
+}
+
+.border-accent {
+    border-color: var(--border-accent);
+}
+
+/* Gradient Backgrounds */
+.gradient-navy {
+    background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
+}
+
+.gradient-gold {
+    background: linear-gradient(135deg, var(--gold-500) 0%, var(--gold-400) 100%);
+}
+
+/* Focus States */
+.focus-ring:focus {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 0.75rem;
+}
+
+.card-elevated {
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-secondary);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Status Indicators */
+.status-positive {
+    color: var(--success-400);
+}
+
+.status-negative {
+    color: var(--error-400);
+}
+
+.status-neutral {
+    color: var(--slate-400);
+}
+
+.status-volatile {
+    color: var(--warning-400);
+}

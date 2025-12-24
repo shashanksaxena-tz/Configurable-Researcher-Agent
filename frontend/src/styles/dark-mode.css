@@ -1,0 +1,181 @@
+/* Dark Mode Styles for Intelligent Research Agent
+   Per FR-016: System MUST support dark mode by default with optional high-contrast light mode
+*/
+
+/* ================================
+   DARK MODE (DEFAULT)
+   ================================ */
+:root {
+    color-scheme: dark;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* ================================
+   LIGHT MODE (OPTIONAL)
+   Applied via data-theme="light" on <html>
+   ================================ */
+[data-theme="light"] {
+    color-scheme: light;
+
+    /* Override background colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: var(--slate-50);
+    --bg-tertiary: var(--slate-100);
+    --bg-elevated: #ffffff;
+    --bg-surface: var(--slate-100);
+
+    /* Override text colors */
+    --text-primary: var(--slate-900);
+    --text-secondary: var(--slate-700);
+    --text-tertiary: var(--slate-600);
+    --text-muted: var(--slate-500);
+    --text-accent: var(--gold-600);
+
+    /* Override border colors */
+    --border-primary: var(--slate-200);
+    --border-secondary: var(--slate-300);
+    --border-accent: var(--gold-500);
+
+    /* Override interactive states */
+    --hover-highlight: rgba(245, 158, 11, 0.1);
+    --active-highlight: rgba(245, 158, 11, 0.2);
+}
+
+/* Light mode specific adjustments */
+[data-theme="light"] .card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .card-elevated {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   HIGH-CONTRAST LIGHT MODE
+   Applied via data-theme="light-hc" on <html>
+   ================================ */
+[data-theme="light-hc"] {
+    color-scheme: light;
+
+    /* High contrast backgrounds */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #e5e5e5;
+    --bg-elevated: #ffffff;
+    --bg-surface: #fafafa;
+
+    /* High contrast text - stronger black */
+    --text-primary: #000000;
+    --text-secondary: #1a1a1a;
+    --text-tertiary: #333333;
+    --text-muted: #4d4d4d;
+    --text-accent: #b45309;
+    /* Darker gold for contrast */
+
+    /* High contrast borders */
+    --border-primary: #666666;
+    --border-secondary: #999999;
+    --border-accent: #b45309;
+}
+
+/* ================================
+   THEME TRANSITIONS
+   Smooth transition when switching themes
+   ================================ */
+body,
+.card,
+.card-elevated,
+.bg-primary,
+.bg-secondary,
+.bg-tertiary {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* ================================
+   SCROLLBAR STYLING (DARK MODE)
+   ================================ */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--slate-600);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--slate-500);
+}
+
+/* Light mode scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track,
+[data-theme="light-hc"] ::-webkit-scrollbar-track {
+    background: var(--slate-100);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb,
+[data-theme="light-hc"] ::-webkit-scrollbar-thumb {
+    background: var(--slate-400);
+}
+
+/* ================================
+   SELECTION STYLING
+   ================================ */
+::selection {
+    background-color: rgba(251, 191, 36, 0.4);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] ::selection,
+[data-theme="light-hc"] ::selection {
+    background-color: rgba(245, 158, 11, 0.3);
+    color: var(--text-primary);
+}
+
+/* ================================
+   FOCUS VISIBLE STYLING
+   ================================ */
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* ================================
+   REDUCED MOTION PREFERENCE
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    body,
+    .card,
+    .card-elevated,
+    .bg-primary,
+    .bg-secondary,
+    .bg-tertiary {
+        transition: none;
+    }
+}
+
+/* ================================
+   SYSTEM PREFERENCE DETECTION
+   Auto-switch based on OS preference (optional)
+   ================================ */
+@media (prefers-color-scheme: light) {
+    [data-theme="system"] {
+        color-scheme: light;
+        /* Apply light mode variables */
+        --bg-primary: #ffffff;
+        --bg-secondary: var(--slate-50);
+        --text-primary: var(--slate-900);
+        --text-secondary: var(--slate-700);
+    }
+}

@@ -8,7 +8,7 @@ import ProviderSelector from './components/ProviderSelector';
 import { getModules, performResearch } from './utils/api';
 import { Loader, AlertCircle } from 'lucide-react';
 
-function App() {
+function LegacyApp() {
   const [modules, setModules] = useState([]);
   const [selectedModules, setSelectedModules] = useState([]);
   const [selectedProviders, setSelectedProviders] = useState([]);
@@ -59,7 +59,7 @@ function App() {
         research_types: selectedModules,
         selected_providers: selectedProviders,
       });
-      
+
       setResults(response);
     } catch (err) {
       console.error('Research failed:', err);
@@ -210,4 +210,4 @@ function App() {
   );
 }
 
-export default App;
+export default LegacyApp;

@@ -1,0 +1,201 @@
+/**
+ * ProgressIndicator Component Styles
+ * Premium animated progress display
+ */
+
+.progress-indicator {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-500);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-indicator--complete {
+    border: 2px solid var(--success-color);
+}
+
+.progress-indicator--failed {
+    border: 2px solid var(--error-color);
+}
+
+/* Progress bar */
+.progress-indicator__bar-container {
+    height: 8px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--spacing-400);
+}
+
+.progress-indicator__bar {
+    height: 100%;
+    background: linear-gradient(90deg,
+            var(--accent-gold) 0%,
+            var(--accent-gold-light) 50%,
+            var(--accent-gold) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+    border-radius: var(--radius-full);
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.progress-indicator--complete .progress-indicator__bar {
+    background: var(--success-color);
+    animation: none;
+}
+
+.progress-indicator--failed .progress-indicator__bar {
+    background: var(--error-color);
+    animation: none;
+}
+
+/* Header */
+.progress-indicator__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-400);
+}
+
+.progress-indicator__percentage {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.progress-indicator--complete .progress-indicator__percentage {
+    color: var(--success-color);
+}
+
+.progress-indicator--failed .progress-indicator__percentage {
+    color: var(--error-color);
+}
+
+.progress-indicator__status {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    max-width: 60%;
+    text-align: right;
+}
+
+/* Stage steps */
+.progress-indicator__stages {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-200);
+    margin-bottom: var(--spacing-400);
+}
+
+.progress-indicator__stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-150);
+    padding: var(--spacing-200);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    transition: all 0.3s ease;
+}
+
+.progress-indicator__stage--complete {
+    background: var(--success-bg);
+}
+
+.progress-indicator__stage--active {
+    background: var(--accent-gold-bg);
+    box-shadow: 0 0 0 2px var(--accent-gold);
+}
+
+.progress-indicator__stage-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    border-radius: var(--radius-full);
+    background: var(--bg-primary);
+}
+
+.progress-indicator__stage--complete .progress-indicator__stage-icon {
+    background: var(--success-color);
+    color: white;
+}
+
+.progress-indicator__stage--active .progress-indicator__stage-icon {
+    background: var(--accent-gold);
+    color: white;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.progress-indicator__stage-label {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.progress-indicator__stage--active .progress-indicator__stage-label {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Info section */
+.progress-indicator__info {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+.progress-indicator__questions,
+.progress-indicator__time {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+}
+
+/* Pulse overlay */
+.progress-indicator__pulse {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            transparent 40%,
+            rgba(var(--accent-gold-rgb), 0.05) 50%,
+            transparent 60%);
+    pointer-events: none;
+}
+
+/* Dark mode */
+[data-theme="dark"] .progress-indicator {
+    background: var(--navy-800);
+}
+
+[data-theme="dark"] .progress-indicator__bar-container {
+    background: var(--navy-700);
+}

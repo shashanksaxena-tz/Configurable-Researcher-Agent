@@ -1,0 +1,130 @@
+/**
+ * ExecutiveBrief Component Styles
+ * Premium Bloomberg/WSJ inspired design per FR-015, FR-016
+ */
+
+.executive-brief {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-600);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.executive-brief--empty {
+    background: var(--bg-secondary);
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.executive-brief__placeholder {
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.executive-brief__placeholder-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: var(--spacing-200);
+}
+
+.executive-brief__placeholder p {
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+.executive-brief__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-400);
+    padding-bottom: var(--spacing-300);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.executive-brief__title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-200);
+}
+
+.executive-brief__title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 24px;
+    background: var(--accent-gold);
+    border-radius: 2px;
+}
+
+.executive-brief__meta {
+    display: flex;
+    gap: var(--spacing-400);
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+.executive-brief__read-time {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+}
+
+.executive-brief__icon {
+    color: var(--accent-gold);
+}
+
+.executive-brief__word-count {
+    padding: var(--spacing-50) var(--spacing-200);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+.executive-brief__content {
+    position: relative;
+}
+
+.executive-brief__summary {
+    font-size: var(--font-size-md);
+    line-height: 1.75;
+    color: var(--text-primary);
+    margin: 0;
+    font-family: var(--font-body);
+    letter-spacing: 0.01em;
+}
+
+/* Premium gradient bar at bottom */
+.executive-brief__gradient-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+            var(--accent-gold) 0%,
+            var(--accent-gold-light) 50%,
+            var(--accent-gold) 100%);
+    opacity: 0.8;
+}
+
+/* Hover state */
+.executive-brief:hover .executive-brief__gradient-bar {
+    opacity: 1;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .executive-brief {
+    background: var(--navy-800);
+}
+
+[data-theme="dark"] .executive-brief__summary {
+    color: var(--slate-100);
+}
